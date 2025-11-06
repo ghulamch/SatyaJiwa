@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Konsultasi - MindCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/sidebar.js" defer></script>
+</head>
+<body>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="mobile-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="mobile-logo">
+            <div class="mobile-logo-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="mobile-logo-text">MindCare</div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar-container"></div>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Jadwal Konsultasi</h1>
+            <p class="page-subtitle">Kelola jadwal konsultasi Anda dengan psikolog profesional</p>
+        </div>
+
+        <!-- Schedule Grid -->
+        <div class="schedule-grid">
+            <!-- Calendar -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Kalender</h3>
+                    <button class="btn-primary" onclick="alert('Buat jadwal baru')">
+                        <i class="fas fa-plus"></i> Buat Jadwal
+                    </button>
+                </div>
+
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <div class="calendar-title">November 2025</div>
+                        <div class="calendar-nav">
+                            <button><i class="fas fa-chevron-left"></i></button>
+                            <button><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="calendar-days">
+                        <div class="calendar-day-label">Min</div>
+                        <div class="calendar-day-label">Sen</div>
+                        <div class="calendar-day-label">Sel</div>
+                        <div class="calendar-day-label">Rab</div>
+                        <div class="calendar-day-label">Kam</div>
+                        <div class="calendar-day-label">Jum</div>
+                        <div class="calendar-day-label">Sab</div>
+                    </div>
+
+                    <div class="calendar-days">
+                        <div class="calendar-date"></div>
+                        <div class="calendar-date"></div>
+                        <div class="calendar-date"></div>
+                        <div class="calendar-date"></div>
+                        <div class="calendar-date"></div>
+                        <div class="calendar-date">1</div>
+                        <div class="calendar-date">2</div>
+                        <div class="calendar-date">3</div>
+                        <div class="calendar-date">4</div>
+                        <div class="calendar-date today has-appointment">5<span class="appointment-dot"></span></div>
+                        <div class="calendar-date has-appointment">6<span class="appointment-dot"></span></div>
+                        <div class="calendar-date">7</div>
+                        <div class="calendar-date">8</div>
+                        <div class="calendar-date">9</div>
+                        <div class="calendar-date">10</div>
+                        <div class="calendar-date">11</div>
+                        <div class="calendar-date has-appointment">12<span class="appointment-dot"></span></div>
+                        <div class="calendar-date">13</div>
+                        <div class="calendar-date">14</div>
+                        <div class="calendar-date">15</div>
+                        <div class="calendar-date">16</div>
+                        <div class="calendar-date">17</div>
+                        <div class="calendar-date">18</div>
+                        <div class="calendar-date">19</div>
+                        <div class="calendar-date">20</div>
+                        <div class="calendar-date">21</div>
+                        <div class="calendar-date">22</div>
+                        <div class="calendar-date">23</div>
+                        <div class="calendar-date">24</div>
+                        <div class="calendar-date">25</div>
+                        <div class="calendar-date">26</div>
+                        <div class="calendar-date">27</div>
+                        <div class="calendar-date">28</div>
+                        <div class="calendar-date">29</div>
+                        <div class="calendar-date">30</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Appointments -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Jadwal Mendatang</h3>
+                </div>
+
+                <div class="appointment-list">
+                    <div class="appointment-card">
+                        <div class="appointment-header">
+                            <div class="appointment-time">
+                                <i class="fas fa-clock"></i>
+                                Hari Ini, 14:00 WIB
+                            </div>
+                            <div class="appointment-status status-upcoming">Segera</div>
+                        </div>
+                        <div class="doctor-info">
+                            <div class="doctor-avatar">SW</div>
+                            <div class="doctor-details">
+                                <h4>Dr. Sarah Wijaya</h4>
+                                <p>Psikolog Klinis</p>
+                            </div>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="btn-outline" onclick="alert('Join video call')">
+                                <i class="fas fa-video"></i> Join
+                            </button>
+                            <button class="btn-outline" onclick="alert('Reschedule')">
+                                <i class="fas fa-calendar"></i> Reschedule
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="appointment-card">
+                        <div class="appointment-header">
+                            <div class="appointment-time">
+                                <i class="fas fa-clock"></i>
+                                Besok, 10:30 WIB
+                            </div>
+                            <div class="appointment-status status-upcoming">Dijadwalkan</div>
+                        </div>
+                        <div class="doctor-info">
+                            <div class="doctor-avatar">AF</div>
+                            <div class="doctor-details">
+                                <h4>Dr. Ahmad Fauzi</h4>
+                                <p>Terapis Kognitif</p>
+                            </div>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="btn-outline" onclick="alert('View details')">
+                                <i class="fas fa-info-circle"></i> Detail
+                            </button>
+                            <button class="btn-outline" onclick="alert('Cancel')">
+                                <i class="fas fa-times"></i> Batalkan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Available Doctors -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Psikolog Tersedia</h3>
+            </div>
+
+            <div class="doctor-list">
+                <div class="doctor-card">
+                    <div class="doctor-card-header">
+                        <div class="doctor-card-avatar">SW</div>
+                        <div class="doctor-card-info">
+                            <h3>Dr. Sarah Wijaya</h3>
+                            <div class="doctor-specialization">Psikolog Klinis</div>
+                            <div class="doctor-rating">
+                                <span class="rating-stars">★★★★★</span>
+                                <span class="rating-text">4.9 (120 ulasan)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doctor-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Tahun</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">450+</div>
+                            <div class="stat-label">Pasien</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">98%</div>
+                            <div class="stat-label">Kepuasan</div>
+                        </div>
+                    </div>
+
+                    <div class="doctor-price">
+                        <span class="price-label">Biaya Konsultasi:</span>
+                        <span class="price-value">Rp 150.000</span>
+                    </div>
+
+                    <button class="btn-primary" style="width: 100%;" onclick="alert('Buat jadwal dengan Dr. Sarah')">
+                        <i class="fas fa-calendar-plus"></i> Buat Jadwal
+                    </button>
+                </div>
+
+                <div class="doctor-card">
+                    <div class="doctor-card-header">
+                        <div class="doctor-card-avatar">AF</div>
+                        <div class="doctor-card-info">
+                            <h3>Dr. Ahmad Fauzi</h3>
+                            <div class="doctor-specialization">Terapis Kognitif</div>
+                            <div class="doctor-rating">
+                                <span class="rating-stars">★★★★★</span>
+                                <span class="rating-text">4.8 (95 ulasan)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doctor-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">6</div>
+                            <div class="stat-label">Tahun</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">380+</div>
+                            <div class="stat-label">Pasien</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">96%</div>
+                            <div class="stat-label">Kepuasan</div>
+                        </div>
+                    </div>
+
+                    <div class="doctor-price">
+                        <span class="price-label">Biaya Konsultasi:</span>
+                        <span class="price-value">Rp 130.000</span>
+                    </div>
+
+                    <button class="btn-primary" style="width: 100%;" onclick="alert('Buat jadwal dengan Dr. Ahmad')">
+                        <i class="fas fa-calendar-plus"></i> Buat Jadwal
+                    </button>
+                </div>
+
+                <div class="doctor-card">
+                    <div class="doctor-card-header">
+                        <div class="doctor-card-avatar">RL</div>
+                        <div class="doctor-card-info">
+                            <h3>Dr. Rina Lestari</h3>
+                            <div class="doctor-specialization">Psikolog Anak & Remaja</div>
+                            <div class="doctor-rating">
+                                <span class="rating-stars">★★★★★</span>
+                                <span class="rating-text">5.0 (78 ulasan)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doctor-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">10</div>
+                            <div class="stat-label">Tahun</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">520+</div>
+                            <div class="stat-label">Pasien</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">99%</div>
+                            <div class="stat-label">Kepuasan</div>
+                        </div>
+                    </div>
+
+                    <div class="doctor-price">
+                        <span class="price-label">Biaya Konsultasi:</span>
+                        <span class="price-value">Rp 170.000</span>
+                    </div>
+
+                    <button class="btn-primary" style="width: 100%;" onclick="alert('Buat jadwal dengan Dr. Rina')">
+                        <i class="fas fa-calendar-plus"></i> Buat Jadwal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const mobileHeader = document.querySelector('.mobile-header');
+            
+            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                if (!sidebar.contains(event.target) && !mobileHeader.contains(event.target)) {
+                    closeSidebar();
+                }
+            }
+        });
+
+        // Calendar date click
+        document.querySelectorAll('.calendar-date').forEach(date => {
+            date.addEventListener('click', function() {
+                if (this.textContent.trim()) {
+                    document.querySelectorAll('.calendar-date').forEach(d => d.classList.remove('selected'));
+                    this.classList.add('selected');
+                }
+            });
+        });
+
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            if (window.innerWidth <= 768 && document.getElementById('sidebar').classList.contains('active')) {
+                closeSidebar();
+            }
+        });
+    </script>
+</body>
+</html>

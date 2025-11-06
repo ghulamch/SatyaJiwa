@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Saya - MindCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/sidebar.js" defer></script>
+</head>
+<body>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="mobile-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="mobile-logo">
+            <div class="mobile-logo-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="mobile-logo-text">MindCare</div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Progress Saya</h1>
+            <p class="page-subtitle">Pantau perkembangan kesehatan mental Anda</p>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab('overview')">
+                <i class="fas fa-chart-pie"></i>
+                <span>Overview</span>
+            </button>
+            <button class="tab-btn" onclick="switchTab('mood')">
+                <i class="fas fa-smile"></i>
+                <span>Mood Tracker</span>
+            </button>
+            <button class="tab-btn" onclick="switchTab('sessions')">
+                <i class="fas fa-clock"></i>
+                <span>Riwayat Sesi</span>
+            </button>
+            <button class="tab-btn" onclick="switchTab('achievements')">
+                <i class="fas fa-trophy"></i>
+                <span>Pencapaian</span>
+            </button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview-tab">
+            <!-- Progress Overview -->
+            <div class="progress-grid">
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <div class="progress-icon" style="background: #dbeafe; color: #1e40af;">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                        <div class="progress-trend trend-up">
+                            <i class="fas fa-arrow-up"></i> 12%
+                        </div>
+                    </div>
+                    <div class="progress-value">7.8</div>
+                    <div class="progress-label">Rata-rata Mood Mingguan</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 78%"></div>
+                    </div>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <div class="progress-icon" style="background: #d1fae5; color: #065f46;">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="progress-trend trend-up">
+                            <i class="fas fa-arrow-up"></i> 3
+                        </div>
+                    </div>
+                    <div class="progress-value">8 Hari</div>
+                    <div class="progress-label">Streak Konsisten</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 57%"></div>
+                    </div>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <div class="progress-icon" style="background: #fce7f3; color: #9f1239;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="progress-trend trend-up">
+                            <i class="fas fa-arrow-up"></i> 15m
+                        </div>
+                    </div>
+                    <div class="progress-value">45 Min</div>
+                    <div class="progress-label">Durasi Meditasi</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 45%"></div>
+                    </div>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <div class="progress-icon" style="background: #fef3c7; color: #92400e;">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="progress-trend trend-up">
+                            <i class="fas fa-arrow-up"></i> 2
+                        </div>
+                    </div>
+                    <div class="progress-value">12</div>
+                    <div class="progress-label">Total Konsultasi</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 60%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mood Chart -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Grafik Mood 30 Hari Terakhir</h3>
+                    <div class="filter-group">
+                        <button class="filter-btn" onclick="changeChartPeriod(7)">7 Hari</button>
+                        <button class="filter-btn active" onclick="changeChartPeriod(30)">30 Hari</button>
+                        <button class="filter-btn" onclick="changeChartPeriod(90)">90 Hari</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas class="chart-canvas" id="moodChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Activity Chart -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Aktivitas Mingguan</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas class="chart-canvas" id="activityChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mood Tab (Hidden by default) -->
+        <div id="mood-tab" style="display: none;">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Riwayat Mood</h3>
+                    <div class="filter-group">
+                        <button class="filter-btn active">Semua</button>
+                        <button class="filter-btn">Minggu Ini</button>
+                        <button class="filter-btn">Bulan Ini</button>
+                    </div>
+                </div>
+
+                <div class="mood-timeline">
+                    <div class="mood-entry">
+                        <div class="mood-date">
+                            <div class="mood-day">Hari Ini</div>
+                            <div class="mood-time">09:30</div>
+                        </div>
+                        <div class="mood-indicator" style="background: #d1fae5;">😊</div>
+                        <div class="mood-details">
+                            <div class="mood-status">Baik</div>
+                            <div class="mood-note">Hari ini sangat produktif. Berhasil menyelesaikan pekerjaan dan olahraga pagi.</div>
+                        </div>
+                    </div>
+
+                    <div class="mood-entry">
+                        <div class="mood-date">
+                            <div class="mood-day">Kemarin</div>
+                            <div class="mood-time">08:15</div>
+                        </div>
+                        <div class="mood-indicator" style="background: #dbeafe;">😐</div>
+                        <div class="mood-details">
+                            <div class="mood-status">Biasa</div>
+                            <div class="mood-note">Merasa sedikit lelah, tapi masih bisa beraktivitas normal.</div>
+                        </div>
+                    </div>
+
+                    <div class="mood-entry">
+                        <div class="mood-date">
+                            <div class="mood-day">2 Hari</div>
+                            <div class="mood-time">10:00</div>
+                        </div>
+                        <div class="mood-indicator" style="background: #fef3c7;">😄</div>
+                        <div class="mood-details">
+                            <div class="mood-status">Senang</div>
+                            <div class="mood-note">Bertemu teman lama dan berbagi cerita. Hari yang menyenangkan!</div>
+                        </div>
+                    </div>
+
+                    <div class="mood-entry">
+                        <div class="mood-date">
+                            <div class="mood-day">3 Hari</div>
+                            <div class="mood-time">07:45</div>
+                        </div>
+                        <div class="mood-indicator" style="background: #fee2e2;">😔</div>
+                        <div class="mood-details">
+                            <div class="mood-status">Kurang Baik</div>
+                            <div class="mood-note">Merasa sedikit cemas karena deadline pekerjaan.</div>
+                        </div>
+                    </div>
+
+                    <div class="mood-entry">
+                        <div class="mood-date">
+                            <div class="mood-day">4 Hari</div>
+                            <div class="mood-time">09:20</div>
+                        </div>
+                        <div class="mood-indicator" style="background: #d1fae5;">😊</div>
+                        <div class="mood-details">
+                            <div class="mood-status">Baik</div>
+                            <div class="mood-note">Meditasi pagi sangat membantu. Merasa lebih tenang.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sessions Tab (Hidden by default) -->
+        <div id="sessions-tab" style="display: none;">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Riwayat Sesi Konsultasi</h3>
+                </div>
+
+                <div class="sessions-list">
+                    <div class="session-item">
+                        <div class="session-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="session-info">
+                            <div class="session-title">Konsultasi dengan Dr. Sarah Wijaya</div>
+                            <div class="session-meta">Hari Ini, 14:00 - Terapi Kognitif</div>
+                        </div>
+                        <div class="session-duration">60 min</div>
+                    </div>
+
+                    <div class="session-item">
+                        <div class="session-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="session-info">
+                            <div class="session-title">Konsultasi dengan Dr. Ahmad Fauzi</div>
+                            <div class="session-meta">3 Nov 2025, 10:30 - Manajemen Stres</div>
+                        </div>
+                        <div class="session-duration">45 min</div>
+                    </div>
+
+                    <div class="session-item">
+                        <div class="session-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <div class="session-info">
+                            <div class="session-title">Meditasi Mindfulness</div>
+                            <div class="session-meta">2 Nov 2025, 07:00 - Meditasi Pagi</div>
+                        </div>
+                        <div class="session-duration">15 min</div>
+                    </div>
+
+                    <div class="session-item">
+                        <div class="session-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="session-info">
+                            <div class="session-title">Konsultasi dengan Dr. Rina Lestari</div>
+                            <div class="session-meta">1 Nov 2025, 15:00 - Terapi Perilaku</div>
+                        </div>
+                        <div class="session-duration">60 min</div>
+                    </div>
+
+                    <div class="session-item">
+                        <div class="session-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <div class="session-info">
+                            <div class="session-title">Relaksasi Guided Imagery</div>
+                            <div class="session-meta">1 Nov 2025, 20:00 - Relaksasi Malam</div>
+                        </div>
+                        <div class="session-duration">20 min</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements Tab (Hidden by default) -->
+        <div id="achievements-tab" style="display: none;">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Pencapaian Anda</h3>
+                </div>
+
+                <div class="achievements-grid">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🔥</div>
+                        <div class="achievement-title">Streak Master</div>
+                        <div class="achievement-desc">8 hari berturut-turut</div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🧘</div>
+                        <div class="achievement-title">Meditasi Pemula</div>
+                        <div class="achievement-desc">10 sesi meditasi</div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon">💬</div>
+                        <div class="achievement-title">Komunikator</div>
+                        <div class="achievement-desc">5 konsultasi</div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon">📚</div>
+                        <div class="achievement-title">Pembelajar</div>
+                        <div class="achievement-desc">Baca 10 artikel</div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon">⭐</div>
+                        <div class="achievement-title">Bintang Bulan Ini</div>
+                        <div class="achievement-desc">Mood positif 20 hari</div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon">💪</div>
+                        <div class="achievement-title">Kuat Mental</div>
+                        <div class="achievement-desc">30 hari konsisten</div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon">🏆</div>
+                        <div class="achievement-title">Champion</div>
+                        <div class="achievement-desc">90 hari streak</div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon">🎯</div>
+                        <div class="achievement-title">Target Tercapai</div>
+                        <div class="achievement-desc">Capai semua goal</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        function switchTab(tab) {
+            // Hide all tabs
+            document.getElementById('overview-tab').style.display = 'none';
+            document.getElementById('mood-tab').style.display = 'none';
+            document.getElementById('sessions-tab').style.display = 'none';
+            document.getElementById('achievements-tab').style.display = 'none';
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab and activate button
+            document.getElementById(tab + '-tab').style.display = 'block';
+            event.target.closest('.tab-btn').classList.add('active');
+
+            // Close sidebar on mobile after tab switch
+            if (window.innerWidth <= 768) {
+                closeSidebar();
+            }
+        }
+
+        function changeChartPeriod(days) {
+            // Remove active class from all filter buttons
+            event.target.parentElement.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // In real app, this would update the chart data
+            console.log('Changing chart period to ' + days + ' days');
+        }
+
+        // Simple chart drawing
+        function drawMoodChart() {
+            const canvas = document.getElementById('moodChart');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
+            const data = [6, 7, 5, 8, 7, 6, 9, 8, 7, 8, 9, 7, 6, 8, 9, 8, 7, 8, 9, 8, 7, 9, 8, 7, 8, 9, 8, 7, 8, 9];
+            const padding = 40;
+            const chartWidth = canvas.width - padding * 2;
+            const chartHeight = canvas.height - padding * 2;
+            const maxValue = 10;
+            const stepX = chartWidth / (data.length - 1);
+
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw grid
+            ctx.strokeStyle = '#e2e8f0';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 5; i++) {
+                const y = padding + (chartHeight / 5) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(canvas.width - padding, y);
+                ctx.stroke();
+            }
+
+            // Draw line
+            ctx.strokeStyle = '#667eea';
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.beginPath();
+
+            data.forEach((value, index) => {
+                const x = padding + stepX * index;
+                const y = canvas.height - padding - (value / maxValue) * chartHeight;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            ctx.stroke();
+
+            // Draw gradient fill
+            const gradient = ctx.createLinearGradient(0, padding, 0, canvas.height - padding);
+            gradient.addColorStop(0, 'rgba(102, 126, 234, 0.2)');
+            gradient.addColorStop(1, 'rgba(102, 126, 234, 0)');
+            
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            data.forEach((value, index) => {
+                const x = padding + stepX * index;
+                const y = canvas.height - padding - (value / maxValue) * chartHeight;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.lineTo(padding, canvas.height - padding);
+            ctx.closePath();
+            ctx.fill();
+
+            // Draw points
+            ctx.fillStyle = '#667eea';
+            data.forEach((value, index) => {
+                const x = padding + stepX * index;
+                const y = canvas.height - padding - (value / maxValue) * chartHeight;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Draw labels
+            ctx.fillStyle = '#64748b';
+            ctx.font = '12px Poppins';
+            ctx.textAlign = 'center';
+            
+            // X-axis labels
+            const labels = ['1', '5', '10', '15', '20', '25', '30'];
+            labels.forEach((label, index) => {
+                const x = padding + (stepX * (data.length - 1) / 6) * index;
+                ctx.fillText(label, x, canvas.height - padding + 20);
+            });
+
+            // Y-axis labels
+            ctx.textAlign = 'right';
+            for (let i = 0; i <= 5; i++) {
+                const y = padding + (chartHeight / 5) * i;
+                const value = maxValue - (maxValue / 5) * i;
+                ctx.fillText(value.toString(), padding - 10, y + 4);
+            }
+        }
+
+        function drawActivityChart() {
+            const canvas = document.getElementById('activityChart');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
+            const data = [
+                { label: 'Sen', value: 45 },
+                { label: 'Sel', value: 60 },
+                { label: 'Rab', value: 30 },
+                { label: 'Kam', value: 75 },
+                { label: 'Jum', value: 50 },
+                { label: 'Sab', value: 90 },
+                { label: 'Min', value: 40 }
+            ];
+
+            const padding = 40;
+            const chartWidth = canvas.width - padding * 2;
+            const chartHeight = canvas.height - padding * 2;
+            const barWidth = chartWidth / data.length - 20;
+            const maxValue = 100;
+
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw bars
+            data.forEach((item, index) => {
+                const x = padding + (chartWidth / data.length) * index + 10;
+                const barHeight = (item.value / maxValue) * chartHeight;
+                const y = canvas.height - padding - barHeight;
+
+                // Gradient
+                const gradient = ctx.createLinearGradient(0, y, 0, canvas.height - padding);
+                gradient.addColorStop(0, '#667eea');
+                gradient.addColorStop(1, '#764ba2');
+
+                // Bar with rounded corners
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.roundRect(x, y, barWidth, barHeight, [8, 8, 0, 0]);
+                ctx.fill();
+
+                // Label
+                ctx.fillStyle = '#64748b';
+                ctx.font = '12px Poppins';
+                ctx.textAlign = 'center';
+                ctx.fillText(item.label, x + barWidth / 2, canvas.height - padding + 20);
+
+                // Value
+                ctx.fillStyle = '#1e293b';
+                ctx.font = '600 12px Poppins';
+                ctx.fillText(item.value + 'm', x + barWidth / 2, y - 8);
+            });
+        }
+
+        // Initialize charts
+        window.addEventListener('load', function() {
+            drawMoodChart();
+            drawActivityChart();
+        });
+
+        // Redraw charts on resize with debounce
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                drawMoodChart();
+                drawActivityChart();
+            }, 250);
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const mobileHeader = document.querySelector('.mobile-header');
+            
+            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                if (!sidebar.contains(event.target) && !mobileHeader.contains(event.target)) {
+                    closeSidebar();
+                }
+            }
+        });
+
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            setTimeout(function() {
+                drawMoodChart();
+                drawActivityChart();
+            }, 100);
+        });
+    </script>
+</body>
+</html>

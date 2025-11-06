@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Meditasi & Relaksasi - MindCare</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/sidebar.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Pastikan sidebar bisa toggle di mobile */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .overlay {
+                display: none;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            
+            .overlay.active {
+                display: block;
+                opacity: 1;
+            }
+            
+            body.sidebar-open {
+                overflow: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="mobile-toggle" id="mobileToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="mobile-logo">
+            <div class="mobile-logo-icon">🧠</div>
+            <span class="mobile-logo-text">MindCare</span>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo-area">
+            <div class="logo-icon">🧠</div>
+            <span class="logo-text">MindCare</span>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home nav-icon"></i>
+                    <span>Beranda</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="konsultasi.html" class="nav-link">
+                    <i class="fas fa-calendar-alt nav-icon"></i>
+                    <span>Jadwal Konsultasi</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="chat.html" class="nav-link">
+                    <i class="fas fa-comments nav-icon"></i>
+                    <span>Chat Psikolog</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="progress.html" class="nav-link">
+                    <i class="fas fa-chart-line nav-icon"></i>
+                    <span>Progress Saya</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="meditasi.html" class="nav-link active">
+                    <i class="fas fa-spa nav-icon"></i>
+                    <span>Meditasi & Relaksasi</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="settings.html" class="nav-link">
+                    <i class="fas fa-cog nav-icon"></i>
+                    <span>Pengaturan</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="user-profile">
+            <div class="profile-img">BS</div>
+            <div class="profile-info">
+                <h4>Budi Santoso</h4>
+                <p>Premium Member</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Meditasi & Relaksasi</h1>
+            <p class="page-subtitle">Temukan ketenangan dan keseimbangan mental melalui meditasi terpandu</p>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon" style="background: var(--success-50); color: var(--success-600);">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+                <div class="stat-value">24</div>
+                <div class="stat-label">Sesi Selesai</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon" style="background: var(--info-50); color: var(--info-600);">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                </div>
+                <div class="stat-value">360</div>
+                <div class="stat-label">Total Menit</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon" style="background: var(--warning-50); color: var(--warning-600);">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                </div>
+                <div class="stat-value">7</div>
+                <div class="stat-label">Hari Beruntun</div>
+            </div>
+        </div>
+
+        <!-- Quick Start Section -->
+        <div class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">Mulai Sekarang</h2>
+            </div>
+            <div class="quick-meditation-grid">
+                <div class="quick-meditation-card" onclick="startMeditation('breathing')">
+                    <div class="meditation-animation">
+                        <div class="breathing-circle"></div>
+                    </div>
+                    <h3>Pernapasan Dalam</h3>
+                    <p>5 menit • Pemula</p>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-play"></i> Mulai
+                    </button>
+                </div>
+                
+                <div class="quick-meditation-card" onclick="startMeditation('body-scan')">
+                    <div class="meditation-animation">
+                        <div class="scan-wave"></div>
+                    </div>
+                    <h3>Body Scan</h3>
+                    <p>10 menit • Menengah</p>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-play"></i> Mulai
+                    </button>
+                </div>
+                
+                <div class="quick-meditation-card" onclick="startMeditation('mindfulness')">
+                    <div class="meditation-animation">
+                        <div class="ripple-effect"></div>
+                    </div>
+                    <h3>Mindfulness</h3>
+                    <p>15 menit • Lanjutan</p>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-play"></i> Mulai
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tutorial Section -->
+        <div class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">Tutorial Meditasi</h2>
+            </div>
+            
+            <div class="tutorial-grid">
+                <!-- Tutorial 1: Breathing -->
+                <div class="tutorial-card">
+                    <div class="tutorial-animation">
+                        <div class="tutorial-breathing-demo">
+                            <div class="breath-indicator">
+                                <div class="breath-circle"></div>
+                                <div class="breath-text">Hirup</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tutorial-content">
+                        <h3>
+                            <i class="fas fa-wind"></i>
+                            Teknik Pernapasan 4-7-8
+                        </h3>
+                        <div class="tutorial-steps">
+                            <div class="tutorial-step">
+                                <span class="step-number">1</span>
+                                <div class="step-content">
+                                    <h4>Hirup (4 detik)</h4>
+                                    <p>Tarik napas perlahan melalui hidung sambil menghitung hingga 4</p>
+                                </div>
+                            </div>
+                            <div class="tutorial-step">
+                                <span class="step-number">2</span>
+                                <div class="step-content">
+                                    <h4>Tahan (7 detik)</h4>
+                                    <p>Tahan napas Anda dan hitung hingga 7</p>
+                                </div>
+                            </div>
+                            <div class="tutorial-step">
+                                <span class="step-number">3</span>
+                                <div class="step-content">
+                                    <h4>Hembuskan (8 detik)</h4>
+                                    <p>Hembuskan napas perlahan melalui mulut sambil menghitung hingga 8</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline" onclick="startBreathingExercise()">
+                            <i class="fas fa-play-circle"></i> Coba Sekarang
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tutorial 2: Body Scan -->
+                <div class="tutorial-card">
+                    <div class="tutorial-animation">
+                        <div class="body-scan-demo">
+                            <div class="body-outline">
+                                <div class="scan-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tutorial-content">
+                        <h3>
+                            <i class="fas fa-user-check"></i>
+                            Body Scan Meditation
+                        </h3>
+                        <div class="tutorial-steps">
+                            <div class="tutorial-step">
+                                <span class="step-number">1</span>
+                                <div class="step-content">
+                                    <h4>Berbaring Nyaman</h4>
+                                    <p>Temukan posisi berbaring yang nyaman dan rileks</p>
+                                </div>
+                            </div>
+                            <div class="tutorial-step">
+                                <span class="step-number">2</span>
+                                <div class="step-content">
+                                    <h4>Fokus Bertahap</h4>
+                                    <p>Mulai dari kaki, perlahan naik ke atas tubuh</p>
+                                </div>
+                            </div>
+                            <div class="tutorial-step">
+                                <span class="step-number">3</span>
+                                <div class="step-content">
+                                    <h4>Lepaskan Ketegangan</h4>
+                                    <p>Sadari dan lepaskan ketegangan di setiap bagian tubuh</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline" onclick="startBodyScan()">
+                            <i class="fas fa-play-circle"></i> Coba Sekarang
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tutorial 3: Mindfulness -->
+                <div class="tutorial-card">
+                    <div class="tutorial-animation">
+                        <div class="mindfulness-demo">
+                            <div class="lotus-flower">
+                                <div class="petal"></div>
+                                <div class="petal"></div>
+                                <div class="petal"></div>
+                                <div class="petal"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tutorial-content">
+                        <h3>
+                            <i class="fas fa-brain"></i>
+                            Mindfulness Meditation
+                        </h3>
+                        <div class="tutorial-steps">
+                            <div class="tutorial-step">
+                                <span class="step-number">1</span>
+                                <div class="step-content">
+                                    <h4>Fokus pada Saat Ini</h4>
+                                    <p>Sadari pikiran tanpa menghakimi</p>
+                                </div>
+                            </div>
+                            <div class="tutorial-step">
+                                <span class="step-number">2</span>
+                                <div class="step-content">
+                                    <h4>Amati Sensasi</h4>
+                                    <p>Perhatikan sensasi tubuh, suara, dan emosi</p>
+                                </div>
+                            </div>
+                            <div class="tutorial-step">
+                                <span class="step-number">3</span>
+                                <div class="step-content">
+                                    <h4>Kembali dengan Lembut</h4>
+                                    <p>Saat pikiran mengembara, kembalikan fokus dengan lembut</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline" onclick="startMindfulness()">
+                            <i class="fas fa-play-circle"></i> Coba Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meditation Library -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Koleksi Meditasi</h2>
+                <div class="filter-group">
+                    <button class="filter-btn active">Semua</button>
+                    <button class="filter-btn">Pemula</button>
+                    <button class="filter-btn">Menengah</button>
+                    <button class="filter-btn">Lanjutan</button>
+                </div>
+            </div>
+            
+            <div class="meditation-library">
+                <div class="meditation-item">
+                    <div class="meditation-icon" style="background: var(--success-50);">
+                        <i class="fas fa-leaf" style="color: var(--success-600);"></i>
+                    </div>
+                    <div class="meditation-info">
+                        <h4>Meditasi Pagi Hari</h4>
+                        <p>Mulai hari dengan energi positif</p>
+                        <div class="meditation-meta">
+                            <span><i class="fas fa-clock"></i> 10 menit</span>
+                            <span><i class="fas fa-signal"></i> Pemula</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+
+                <div class="meditation-item">
+                    <div class="meditation-icon" style="background: var(--info-50);">
+                        <i class="fas fa-moon" style="color: var(--info-600);"></i>
+                    </div>
+                    <div class="meditation-info">
+                        <h4>Meditasi Tidur</h4>
+                        <p>Relaksasi mendalam untuk tidur nyenyak</p>
+                        <div class="meditation-meta">
+                            <span><i class="fas fa-clock"></i> 20 menit</span>
+                            <span><i class="fas fa-signal"></i> Semua Level</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+
+                <div class="meditation-item">
+                    <div class="meditation-icon" style="background: var(--warning-50);">
+                        <i class="fas fa-sun" style="color: var(--warning-600);"></i>
+                    </div>
+                    <div class="meditation-info">
+                        <h4>Mengatasi Stres</h4>
+                        <p>Teknik untuk meredakan kecemasan</p>
+                        <div class="meditation-meta">
+                            <span><i class="fas fa-clock"></i> 15 menit</span>
+                            <span><i class="fas fa-signal"></i> Menengah</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+
+                <div class="meditation-item">
+                    <div class="meditation-icon" style="background: #fef3e2;">
+                        <i class="fas fa-heart" style="color: #f59e0b;"></i>
+                    </div>
+                    <div class="meditation-info">
+                        <h4>Loving Kindness</h4>
+                        <p>Meditasi kasih sayang untuk diri dan orang lain</p>
+                        <div class="meditation-meta">
+                            <span><i class="fas fa-clock"></i> 12 menit</span>
+                            <span><i class="fas fa-signal"></i> Lanjutan</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+
+                <div class="meditation-item">
+                    <div class="meditation-icon" style="background: #f3e8ff;">
+                        <i class="fas fa-spa" style="color: #8b5cf6;"></i>
+                    </div>
+                    <div class="meditation-info">
+                        <h4>Chakra Balancing</h4>
+                        <p>Seimbangkan energi chakra tubuh</p>
+                        <div class="meditation-meta">
+                            <span><i class="fas fa-clock"></i> 25 menit</span>
+                            <span><i class="fas fa-signal"></i> Lanjutan</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+
+                <div class="meditation-item">
+                    <div class="meditation-icon" style="background: var(--info-50);">
+                        <i class="fas fa-water" style="color: var(--info-600);"></i>
+                    </div>
+                    <div class="meditation-info">
+                        <h4>Meditasi Fokus</h4>
+                        <p>Tingkatkan konsentrasi dan produktivitas</p>
+                        <div class="meditation-meta">
+                            <span><i class="fas fa-clock"></i> 8 menit</span>
+                            <span><i class="fas fa-signal"></i> Pemula</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Meditation Modal -->
+    <div class="meditation-modal" id="meditationModal">
+        <div class="meditation-modal-content">
+            <button class="modal-close" onclick="closeMeditationModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="meditation-player">
+                <div class="meditation-visual">
+                    <div class="meditation-circle-anim">
+                        <div class="circle-outer"></div>
+                        <div class="circle-middle"></div>
+                        <div class="circle-inner"></div>
+                    </div>
+                </div>
+                
+                <h2 id="meditationTitle">Meditasi Pernapasan</h2>
+                <p id="meditationInstruction">Ikuti panduan pernapasan...</p>
+                
+                <div class="meditation-timer">
+                    <span id="timerDisplay">00:00</span>
+                </div>
+                
+                <div class="meditation-controls">
+                    <button class="control-btn" id="playPauseBtn" onclick="togglePlayPause()">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="control-btn" onclick="resetMeditation()">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+                
+                <div class="meditation-progress-bar">
+                    <div class="meditation-progress" id="meditationProgress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // MOBILE TOGGLE - FIXED VERSION
+        // ========================================
+        
+        const sidebar = document.getElementById('sidebar');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const overlay = document.getElementById('overlay');
+
+        // Toggle Sidebar Function
+        function toggleSidebar() {
+            if (sidebar && overlay) {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.classList.toggle('sidebar-open');
+                
+                console.log('Sidebar toggled:', sidebar.classList.contains('active'));
+            } else {
+                console.error('Sidebar atau overlay tidak ditemukan!');
+            }
+        }
+
+        // Close Sidebar Function
+        function closeSidebar() {
+            if (sidebar && overlay) {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+            }
+        }
+
+        // Event listener untuk mobile toggle button
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleSidebar();
+            });
+        } else {
+            console.error('Mobile toggle button tidak ditemukan!');
+        }
+
+        // Event listener untuk overlay
+        if (overlay) {
+            overlay.addEventListener('click', closeSidebar);
+        }
+
+        // Close sidebar saat click di luar (hanya di mobile)
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768) {
+                const mobileHeader = document.querySelector('.mobile-header');
+                
+                if (sidebar && sidebar.classList.contains('active')) {
+                    // Check jika click bukan di sidebar dan bukan di mobile header
+                    if (!sidebar.contains(event.target) && 
+                        !mobileHeader.contains(event.target)) {
+                        closeSidebar();
+                    }
+                }
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeSidebar();
+            }
+        });
+
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            setTimeout(() => {
+                if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('active')) {
+                    // Optional: close sidebar on orientation change
+                    // closeSidebar();
+                }
+            }, 300);
+        });
+
+        // Debug: Log saat halaman load
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded');
+            console.log('Sidebar:', sidebar ? 'Found' : 'Not found');
+            console.log('Mobile Toggle:', mobileToggle ? 'Found' : 'Not found');
+            console.log('Overlay:', overlay ? 'Found' : 'Not found');
+        });
+
+        // ========================================
+        // MEDITATION FUNCTIONS
+        // ========================================
+        
+        let meditationTimer;
+        let timerSeconds = 0;
+        let isPlaying = false;
+
+        function startMeditation(type) {
+            const modal = document.getElementById('meditationModal');
+            const title = document.getElementById('meditationTitle');
+            const instruction = document.getElementById('meditationInstruction');
+            
+            const meditations = {
+                'breathing': {
+                    title: 'Meditasi Pernapasan',
+                    instruction: 'Ikuti panduan pernapasan 4-7-8...',
+                    duration: 300
+                },
+                'body-scan': {
+                    title: 'Body Scan Meditation',
+                    instruction: 'Fokuskan perhatian pada setiap bagian tubuh...',
+                    duration: 600
+                },
+                'mindfulness': {
+                    title: 'Mindfulness Meditation',
+                    instruction: 'Sadari momen saat ini tanpa menghakimi...',
+                    duration: 900
+                }
+            };
+
+            const selected = meditations[type];
+            title.textContent = selected.title;
+            instruction.textContent = selected.instruction;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMeditationModal() {
+            const modal = document.getElementById('meditationModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            resetMeditation();
+        }
+
+        function togglePlayPause() {
+            isPlaying = !isPlaying;
+            const btn = document.getElementById('playPauseBtn');
+            
+            if (isPlaying) {
+                btn.innerHTML = '<i class="fas fa-pause"></i>';
+                startTimer();
+            } else {
+                btn.innerHTML = '<i class="fas fa-play"></i>';
+                stopTimer();
+            }
+        }
+
+        function startTimer() {
+            meditationTimer = setInterval(() => {
+                timerSeconds++;
+                updateTimerDisplay();
+                updateProgress();
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(meditationTimer);
+        }
+
+        function resetMeditation() {
+            stopTimer();
+            timerSeconds = 0;
+            isPlaying = false;
+            updateTimerDisplay();
+            document.getElementById('meditationProgress').style.width = '0%';
+            document.getElementById('playPauseBtn').innerHTML = '<i class="fas fa-play"></i>';
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timerSeconds / 60);
+            const seconds = timerSeconds % 60;
+            document.getElementById('timerDisplay').textContent = 
+                `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        function updateProgress() {
+            const maxDuration = 900; // 15 minutes
+            const progress = Math.min((timerSeconds / maxDuration) * 100, 100);
+            document.getElementById('meditationProgress').style.width = progress + '%';
+        }
+
+        function startBreathingExercise() {
+            startMeditation('breathing');
+        }
+
+        function startBodyScan() {
+            startMeditation('body-scan');
+        }
+
+        function startMindfulness() {
+            startMeditation('mindfulness');
+        }
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

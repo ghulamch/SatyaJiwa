@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Psikolog - MindCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/sidebar.js" defer></script>
+
+</head>
+<body>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="mobile-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="mobile-logo">
+            <div class="mobile-logo-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="mobile-logo-text">MindCare</div>
+        </div>
+    </header>
+
+    <!-- Mobile Chat List Toggle -->
+    <div class="mobile-chat-list-toggle" onclick="toggleChatList()">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="chat-container">
+            <!-- Chat List -->
+            <div class="chat-list" id="chatList">
+                <div class="chat-list-header">
+                    <h2 class="chat-list-title">Pesan</h2>
+                    <div class="search-chat">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Cari chat...">
+                    </div>
+                </div>
+
+                <div class="chat-items">
+                    <div class="chat-item active" onclick="openChat('sarah')">
+                        <div class="chat-avatar">
+                            SW
+                            <span class="online-indicator"></span>
+                        </div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <span class="chat-name">Dr. Sarah Wijaya</span>
+                                <span class="chat-time">10:30</span>
+                            </div>
+                            <div class="chat-preview">Baik, saya akan tunggu di video call</div>
+                        </div>
+                    </div>
+
+                    <div class="chat-item" onclick="openChat('ahmad')">
+                        <div class="chat-avatar">AF</div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <span class="chat-name">Dr. Ahmad Fauzi</span>
+                                <span class="chat-time">Kemarin</span>
+                            </div>
+                            <div class="chat-preview">Jangan lupa latihan pernapasan yang...</div>
+                        </div>
+                    </div>
+
+                    <div class="chat-item" onclick="openChat('rina')">
+                        <div class="chat-avatar">
+                            RL
+                            <span class="online-indicator"></span>
+                        </div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <span class="chat-name">Dr. Rina Lestari</span>
+                                <span class="chat-time">2 hari</span>
+                            </div>
+                            <div class="chat-preview">Terima kasih atas kesediaannya 🙏</div>
+                        </div>
+                    </div>
+
+                    <div class="chat-item" onclick="openChat('support')">
+                        <div class="chat-avatar">MC</div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <span class="chat-name">MindCare Support</span>
+                                <span class="chat-time">1 minggu</span>
+                            </div>
+                            <div class="chat-preview">Selamat datang di MindCare! 👋</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Window -->
+            <div class="chat-window">
+                <div class="chat-window-header">
+                    <div class="chat-window-info">
+                        <div class="chat-avatar">
+                            SW
+                            <span class="online-indicator"></span>
+                        </div>
+                        <div class="chat-window-details">
+                            <h3>Dr. Sarah Wijaya</h3>
+                            <div class="chat-window-status">
+                                <i class="fas fa-circle" style="font-size: 8px;"></i>
+                                Online
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-actions">
+                        <button class="chat-action-btn" onclick="alert('Mulai video call')">
+                            <i class="fas fa-video"></i>
+                        </button>
+                        <button class="chat-action-btn" onclick="alert('Mulai voice call')">
+                            <i class="fas fa-phone"></i>
+                        </button>
+                        <button class="chat-action-btn" onclick="alert('Info chat')">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="date-divider">
+                        <span>Hari Ini</span>
+                    </div>
+
+                    <div class="message-group">
+                        <div class="message-avatar">SW</div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <div class="message-text">Selamat pagi, Budi! Bagaimana kabarmu hari ini? 😊</div>
+                            </div>
+                            <div class="message-time">09:15</div>
+                        </div>
+                    </div>
+
+                    <div class="message-group own">
+                        <div class="message-avatar">BS</div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <div class="message-text">Pagi, Dok! Alhamdulillah baik. Sudah melakukan latihan pernapasan seperti yang Dok ajarkan kemarin.</div>
+                            </div>
+                            <div class="message-time">09:18</div>
+                        </div>
+                    </div>
+
+                    <div class="message-group">
+                        <div class="message-avatar">SW</div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <div class="message-text">Wah, bagus sekali! Apakah kamu merasakan perbedaannya?</div>
+                            </div>
+                            <div class="message-time">09:20</div>
+                        </div>
+                    </div>
+
+                    <div class="message-group own">
+                        <div class="message-avatar">BS</div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <div class="message-text">Iya Dok, saya merasa lebih tenang. Terutama saat menghadapi situasi yang bikin cemas.</div>
+                            </div>
+                            <div class="message-time">09:22</div>
+                        </div>
+                    </div>
+
+                    <div class="message-group">
+                        <div class="message-avatar">SW</div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <div class="message-text">Senang mendengarnya! Untuk sesi konsultasi hari ini jam 14:00, sudah siap?</div>
+                            </div>
+                            <div class="message-time">09:25</div>
+                        </div>
+                    </div>
+
+                    <div class="message-group own">
+                        <div class="message-avatar">BS</div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <div class="message-text">Siap Dok! Saya akan join dari rumah.</div>
+                            </div>
+                            <div class="message-time">09:28</div>
+                        </div>
+                    </div>
+
+                    <div class="message-group">
+                        <div class="message-avatar">SW</div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <div class="message-text">Baik, saya akan tunggu di video call ya. Sampai jumpa! 👋</div>
+                            </div>
+                            <div class="message-time">10:30</div>
+                        </div>
+                    </div>
+
+                    <div class="message-group">
+                        <div class="message-avatar">SW</div>
+                        <div class="message-content">
+                            <div class="typing-indicator">
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="chat-input-wrapper">
+                        <textarea class="chat-input" id="chatInput" placeholder="Ketik pesan..." rows="1"></textarea>
+                        <div class="input-actions">
+                            <button class="input-btn" onclick="alert('Attach file')">
+                                <i class="fas fa-paperclip"></i>
+                            </button>
+                            <button class="input-btn" onclick="alert('Add emoji')">
+                                <i class="fas fa-smile"></i>
+                            </button>
+                            <button class="input-btn send-btn" onclick="sendMessage()">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        function toggleChatList() {
+            const chatList = document.getElementById('chatList');
+            chatList.classList.toggle('show');
+        }
+
+        function openChat(chatId) {
+            document.querySelectorAll('.chat-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+
+            if (window.innerWidth <= 768) {
+                document.getElementById('chatList').classList.remove('show');
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (message) {
+                const messagesContainer = document.getElementById('chatMessages');
+                const messageHTML = `
+                    <div class="message-group own">
+                        <div class="message-avatar">BS</div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <div class="message-text">${message}</div>
+                            </div>
+                            <div class="message-time">${new Date().toLocaleTimeString('id-ID', {hour: '2-digit', minute: '2-digit'})}</div>
+                        </div>
+                    </div>
+                `;
+                
+                const typingIndicator = document.querySelector('.typing-indicator').parentElement.parentElement;
+                messagesContainer.insertBefore(
+                    document.createRange().createContextualFragment(messageHTML),
+                    typingIndicator
+                );
+
+                input.value = '';
+                input.style.height = '44px';
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
+
+        // Auto-resize textarea
+        document.getElementById('chatInput').addEventListener('input', function() {
+            this.style.height = '44px';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+
+        // Send with Enter
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Auto-scroll to bottom
+        window.addEventListener('load', function() {
+            const messages = document.getElementById('chatMessages');
+            messages.scrollTop = messages.scrollHeight;
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const chatList = document.getElementById('chatList');
+            const mobileHeader = document.querySelector('.mobile-header');
+            const chatToggle = document.querySelector('.mobile-chat-list-toggle');
+            
+            if (window.innerWidth <= 768) {
+                // Close sidebar
+                if (sidebar.classList.contains('active')) {
+                    if (!sidebar.contains(event.target) && !mobileHeader.contains(event.target)) {
+                        closeSidebar();
+                    }
+                }
+                
+                // Close chat list
+                if (chatList.classList.contains('show')) {
+                    if (!chatList.contains(event.target) && !chatToggle.contains(event.target)) {
+                        chatList.classList.remove('show');
+                    }
+                }
+            }
+        });
+
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            if (window.innerWidth <= 768) {
+                closeSidebar();
+                document.getElementById('chatList').classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

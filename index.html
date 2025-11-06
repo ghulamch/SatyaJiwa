@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MindCare</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/sidebar.js" defer></script>
+
+</head>
+<body>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="mobile-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="mobile-logo">
+            <div class="mobile-logo-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="mobile-logo-text">MindCare</div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Selamat Datang, Budi 👋</h1>
+            <p class="page-subtitle">Semoga harimu menyenangkan. Mari kita jaga kesehatan mental bersama.</p>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Mulai Hari dengan Mindfulness</h1>
+                <p>Luangkan 5 menit untuk meditasi dan tenangkan pikiran Anda sebelum memulai aktivitas.</p>
+                <button class="btn btn-primary" style="background: white; color: #6366f1;" onclick="window.location.href='meditation.html'">
+                    <i class="fas fa-play-circle"></i> Mulai Meditasi
+                </button>
+            </div>
+        </section>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); color: #1e40af;">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                </div>
+                <div class="stat-value">12</div>
+                <div class="stat-label">Total Konsultasi</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); color: #065f46;">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                </div>
+                <div class="stat-value">8 Hari</div>
+                <div class="stat-label">Streak Mood Tracker</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); color: #9f1239;">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                </div>
+                <div class="stat-value">45 Min</div>
+                <div class="stat-label">Durasi Meditasi</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); color: #92400e;">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+                <div class="stat-value">6</div>
+                <div class="stat-label">Badge Pencapaian</div>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Mood Tracker -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Bagaimana perasaanmu hari ini?</h3>
+                </div>
+                <div class="mood-grid">
+                    <div class="mood-option" data-mood="buruk" onclick="selectMood(this, 'buruk')">
+                        <div class="checkmark-badge">✓</div>
+                        <div class="mood-emoji">😭</div>
+                        <div class="mood-label">Buruk</div>
+                    </div>
+                    <div class="mood-option" data-mood="kurang" onclick="selectMood(this, 'kurang')">
+                        <div class="checkmark-badge">✓</div>
+                        <div class="mood-emoji">😔</div>
+                        <div class="mood-label">Kurang</div>
+                    </div>
+                    <div class="mood-option" data-mood="biasa" onclick="selectMood(this, 'biasa')">
+                        <div class="checkmark-badge">✓</div>
+                        <div class="mood-emoji">😐</div>
+                        <div class="mood-label">Biasa</div>
+                    </div>
+                    <div class="mood-option" data-mood="baik" onclick="selectMood(this, 'baik')">
+                        <div class="checkmark-badge">✓</div>
+                        <div class="mood-emoji">😊</div>
+                        <div class="mood-label">Baik</div>
+                    </div>
+                    <div class="mood-option" data-mood="senang" onclick="selectMood(this, 'senang')">
+                        <div class="checkmark-badge">✓</div>
+                        <div class="mood-emoji">😄</div>
+                        <div class="mood-label">Senang</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Appointments -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Jadwal Mendatang</h3>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div style="padding: 16px; border-radius: 12px; background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); border: 1px solid #e5e7eb;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <div style="display: flex; align-items: center; gap: 8px; color: #6366f1; font-weight: 600; font-size: 14px;">
+                                <i class="fas fa-clock"></i>
+                                Hari Ini, 14:00
+                            </div>
+                            <span style="padding: 4px 12px; background: #dbeafe; color: #1e40af; border-radius: 8px; font-size: 12px; font-weight: 600;">Segera</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 14px;">SW</div>
+                            <div>
+                                <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 2px;">Dr. Sarah Wijaya</h4>
+                                <p style="font-size: 13px; color: #6b7280;">Psikolog Klinis</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="padding: 16px; border-radius: 12px; background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); border: 1px solid #e5e7eb;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <div style="display: flex; align-items: center; gap: 8px; color: #6366f1; font-weight: 600; font-size: 14px;">
+                                <i class="fas fa-clock"></i>
+                                Besok, 10:30
+                            </div>
+                            <span style="padding: 4px 12px; background: #f3f4f6; color: #4b5563; border-radius: 8px; font-size: 12px; font-weight: 600;">Dijadwalkan</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 14px;">AF</div>
+                            <div>
+                                <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 2px;">Dr. Ahmad Fauzi</h4>
+                                <p style="font-size: 13px; color: #6b7280;">Terapis Kognitif</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Artikel Kesehatan Mental</h3>
+                <a href="#" style="color: #6366f1; font-size: 14px; text-decoration: none; font-weight: 500;">Lihat Semua</a>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div style="display: flex; gap: 16px; padding: 20px; border-radius: 16px; background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); cursor: pointer; transition: all 0.2s;">
+                    <div style="width: 80px; height: 80px; border-radius: 12px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; color: white;">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Teknik Mindfulness untuk Mengatasi Stres</h4>
+                        <p style="font-size: 14px; color: #6b7280; line-height: 1.5;">Pelajari cara mengelola stres dengan teknik mindfulness yang terbukti efektif.</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 16px; padding: 20px; border-radius: 16px; background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); cursor: pointer; transition: all 0.2s;">
+                    <div style="width: 80px; height: 80px; border-radius: 12px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; color: white;">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Pentingnya Self-Care dalam Kehidupan Sehari-hari</h4>
+                        <p style="font-size: 14px; color: #6b7280; line-height: 1.5;">Temukan cara membangun rutinitas self-care yang konsisten dan bermanfaat.</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 16px; padding: 20px; border-radius: 16px; background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); cursor: pointer; transition: all 0.2s;">
+                    <div style="width: 80px; height: 80px; border-radius: 12px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; color: white;">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Tips Meningkatkan Kualitas Tidur</h4>
+                        <p style="font-size: 14px; color: #6b7280; line-height: 1.5;">Dapatkan tidur berkualitas untuk kesehatan mental yang lebih baik.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        function selectMood(element, mood) {
+            // Remove previous selection
+            document.querySelectorAll('.mood-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selection to clicked element
+            element.classList.add('selected');
+            
+            // Show success message with emoji
+            const moodEmojis = {
+                'buruk': '😭',
+                'kurang': '😔',
+                'biasa': '😐',
+                'baik': '😊',
+                'senang': '😄'
+            };
+            
+            setTimeout(() => {
+                alert(`Mood ${moodEmojis[mood]} berhasil disimpan! Terima kasih telah berbagi perasaanmu hari ini 💙`);
+            }, 400);
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const mobileHeader = document.querySelector('.mobile-header');
+            
+            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                if (!sidebar.contains(event.target) && !mobileHeader.contains(event.target)) {
+                    closeSidebar();
+                }
+            }
+        });
+
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            if (window.innerWidth <= 768 && document.getElementById('sidebar').classList.contains('active')) {
+                closeSidebar();
+            }
+        });
+    </script>
+</body>
+</html>
