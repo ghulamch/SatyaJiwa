@@ -3,279 +3,765 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - SatyaJiwa</title>
-    
-    <!-- Google Fonts -->
+    <title>SatyaJiwa - Sehatkan Pikiranmu, Bahagiakan Hidupmu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="assets/js/sidebar.js" defer></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/landing.css">
 </head>
 <body>
-    <!-- Overlay -->
-    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="assets/img/logo.png" alt="SatyaJiwa Logo" style="height: 40px; margin-left: 8px;">
+                <span class="logo-text">SatyaJiwa</span>
+            </a>
 
-    <!-- Mobile Header -->
-    <header class="mobile-header">
-        <div class="mobile-toggle" onclick="toggleSidebar()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div class="mobile-logo">
-            <div class="mobile-logo-icon">
-                <i class="fas fa-brain"></i>
-            </div>
-            <div class="mobile-logo-text">SatyaJiwa</div>
-        </div>
-    </header>
+            <ul class="nav-menu">
+                <li><a href="#beranda" class="nav-link">Beranda</a></li>
+                <li><a href="#tentang" class="nav-link">Tentang</a></li>
+                <li><a href="#fitur" class="nav-link">Fitur</a></li>
+                <li><a href="#edukasi" class="nav-link">Edukasi</a></li>
 
-    <!-- Sidebar Navigation -->
-    <div id="sidebar-container"></div>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Page Header -->
-        <div class="page-header">
-            <h1 class="page-title">Selamat Datang, Budi 👋</h1>
-            <p class="page-subtitle">Semoga harimu menyenangkan. Mari kita jaga kesehatan mental bersama.</p>
-        </div>
-
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1>Mulai Hari dengan Mindfulness</h1>
-                <p>Luangkan 5 menit untuk meditasi dan tenangkan pikiran Anda sebelum memulai aktivitas.</p>
-                <button class="btn btn-primary" style="background: white; color: #6366f1;" onclick="window.location.href='meditation.html'">
-                    <i class="fas fa-play-circle"></i> Mulai Meditasi
-                </button>
-            </div>
-        </section>
-
-        <!-- Stats Row -->
-        <div class="stats-row">
-            <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); color: #1e40af;">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                </div>
-                <div class="stat-value">12</div>
-                <div class="stat-label">Total Konsultasi</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); color: #065f46;">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                </div>
-                <div class="stat-value">8 Hari</div>
-                <div class="stat-label">Streak Mood Tracker</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); color: #9f1239;">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                </div>
-                <div class="stat-value">45 Min</div>
-                <div class="stat-label">Durasi Meditasi</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); color: #92400e;">
-                        <i class="fas fa-award"></i>
-                    </div>
-                </div>
-                <div class="stat-value">6</div>
-                <div class="stat-label">Badge Pencapaian</div>
-            </div>
-        </div>
-
-        <!-- Content Grid -->
-        <div class="content-grid">
-            <!-- Mood Tracker -->
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Bagaimana perasaanmu hari ini?</h3>
-                </div>
-                <div class="mood-grid">
-                    <div class="mood-option" data-mood="buruk" onclick="selectMood(this, 'buruk')">
-                        <div class="checkmark-badge">✓</div>
-                        <div class="mood-emoji">😭</div>
-                        <div class="mood-label">Buruk</div>
-                    </div>
-                    <div class="mood-option" data-mood="kurang" onclick="selectMood(this, 'kurang')">
-                        <div class="checkmark-badge">✓</div>
-                        <div class="mood-emoji">😔</div>
-                        <div class="mood-label">Kurang</div>
-                    </div>
-                    <div class="mood-option" data-mood="biasa" onclick="selectMood(this, 'biasa')">
-                        <div class="checkmark-badge">✓</div>
-                        <div class="mood-emoji">😐</div>
-                        <div class="mood-label">Biasa</div>
-                    </div>
-                    <div class="mood-option" data-mood="baik" onclick="selectMood(this, 'baik')">
-                        <div class="checkmark-badge">✓</div>
-                        <div class="mood-emoji">😊</div>
-                        <div class="mood-label">Baik</div>
-                    </div>
-                    <div class="mood-option" data-mood="senang" onclick="selectMood(this, 'senang')">
-                        <div class="checkmark-badge">✓</div>
-                        <div class="mood-emoji">😄</div>
-                        <div class="mood-label">Senang</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Upcoming Appointments -->
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Jadwal Mendatang</h3>
-                </div>
                 
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div style="padding: 16px; border-radius: 12px; background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); border: 1px solid #e5e7eb;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                            <div style="display: flex; align-items: center; gap: 8px; color: #6366f1; font-weight: 600; font-size: 14px;">
-                                <i class="fas fa-clock"></i>
-                                Hari Ini, 14:00
-                            </div>
-                            <span style="padding: 4px 12px; background: #dbeafe; color: #1e40af; border-radius: 8px; font-size: 12px; font-weight: 600;">Segera</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                            <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 14px;">SW</div>
-                            <div>
-                                <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 2px;">Dr. Sarah Wijaya</h4>
-                                <p style="font-size: 13px; color: #6b7280;">Psikolog Klinis</p>
-                            </div>
-                        </div>
+                <div class="nav-cta-mobile">
+                    <a href="login.html" class="btn btn-outline">Masuk</a>
+                    <a href="login.html" class="btn btn-primary">Daftar Sekarang</a>
+                </div>
+            </ul>
+
+            <div class="nav-cta">
+                <a href="login.html" class="btn btn-outline">Masuk</a>
+                <a href="login.html" class="btn btn-primary">Daftar Sekarang</a>
+            </div>
+
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <section class="hero" id="beranda">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1>
+                        Sehatkan Pikiranmu,<br>
+                        <span class="gradient-text">Bahagiakan Hidupmu</span>
+                    </h1>
+                    <p>
+                        Platform kesehatan mental terpercaya untuk konsultasi online dan latihan mandiri. 
+                        Kelola stres, kecemasan, dan emosi dengan bimbingan profesional dari rumah.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="login.html" class="btn btn-primary">
+                            <i class="fas fa-comments"></i>
+                            Mulai Konsultasi
+                        </a>
+                        <a href="login.html" class="btn btn-outline">
+                            <i class="fas fa-heart"></i>
+                            Coba Latihan Mandiri
+                        </a>
                     </div>
 
-                    <div style="padding: 16px; border-radius: 12px; background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); border: 1px solid #e5e7eb;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                            <div style="display: flex; align-items: center; gap: 8px; color: #6366f1; font-weight: 600; font-size: 14px;">
-                                <i class="fas fa-clock"></i>
-                                Besok, 10:30
-                            </div>
-                            <span style="padding: 4px 12px; background: #f3f4f6; color: #4b5563; border-radius: 8px; font-size: 12px; font-weight: 600;">Dijadwalkan</span>
+                    <div class="hero-stats">
+                        <div class="stat-item fade-in-delay-1">
+                            <div class="stat-value">1500+</div>
+                            <div class="stat-label">Pengguna Aktif</div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                            <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 14px;">AF</div>
-                            <div>
-                                <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 2px;">Dr. Ahmad Fauzi</h4>
-                                <p style="font-size: 13px; color: #6b7280;">Terapis Kognitif</p>
-                            </div>
+                        <div class="stat-item fade-in-delay-2">
+                            <div class="stat-value">50+</div>
+                            <div class="stat-label">Psikolog Profesional</div>
+                        </div>
+                        <div class="stat-item fade-in-delay-3">
+                            <div class="stat-value">4.9/5</div>
+                            <div class="stat-label">Rating Pengguna</div>
                         </div>
                     </div>
                 </div>
+
+                <div class="hero-image" style="max-width: 600px; height: 500px;">
+                    <img src="assets/img/meditasi.png" style="width: 100%; height: 100%; object-fit: contain;" alt="Meditasi Illustration">
+                </div>
+
             </div>
         </div>
+    </section>
 
-        <!-- Education Section -->
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Artikel Kesehatan Mental</h3>
-                <a href="#" style="color: #6366f1; font-size: 14px; text-decoration: none; font-weight: 500;">Lihat Semua</a>
+    <section class="about" id="tentang" style="background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%); padding: var(--spacing-4xl) 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">TENTANG KAMI</span>
+                <h2 class="section-title">Kenali SatyaJiwa Lebih Dekat</h2>
+                <p class="section-subtitle">
+                    SatyaJiwa hadir sebagai solusi kesehatan mental modern yang mudah diakses, aman, dan terpercaya. 
+                    Kami percaya bahwa setiap orang berhak mendapatkan dukungan emosional dan bimbingan profesional 
+                    untuk hidup yang lebih bahagia dan sehat.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="features" id="fitur">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">FITUR UNGGULAN</span>
+                <h2 class="section-title">Apa yang Kami Tawarkan</h2>
+                <p class="section-subtitle">
+                    Platform lengkap untuk mendukung perjalanan kesehatan mental Anda dengan 
+                    berbagai fitur terintegrasi dan mudah digunakan
+                </p>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                <div style="display: flex; gap: 16px; padding: 20px; border-radius: 16px; background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); cursor: pointer; transition: all 0.2s;">
-                    <div style="width: 80px; height: 80px; border-radius: 12px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; color: white;">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Konsultasi Online</h3>
+                    <p>
+                        Terhubung dengan psikolog dan psikiater profesional melalui video call atau 
+                        chat. Konsultasi kapan saja, di mana saja dengan privasi terjamin.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Latihan Mandiri</h3>
+                    <p>
+                        Akses berbagai latihan meditasi, mindfulness, dan breathing exercise yang 
+                        terpandu untuk membantu mengelola stres dan kecemasan.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Mood Tracker</h3>
+                    <p>
+                        Pantau perkembangan kondisi emosional Anda dengan mood tracker harian. 
+                        Dapatkan insight dan rekomendasi personal.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Gamifikasi</h3>
+                    <p>
+                        Raih pencapaian dan badge dengan menyelesaikan latihan rutin. 
+                        Motivasi diri dengan sistem reward yang menyenangkan.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="education" id="edukasi">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">EDUKASI</span>
+                <h2 class="section-title">Tips & Panduan Kesehatan Mental</h2>
+                <p class="section-subtitle">
+                    Pelajari lebih lanjut tentang kesehatan mental dengan artikel, video, 
+                    dan panduan dari para ahli
+                </p>
+            </div>
+
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-image">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <div>
-                        <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Teknik Mindfulness untuk Mengatasi Stres</h4>
-                        <p style="font-size: 14px; color: #6b7280; line-height: 1.5;">Pelajari cara mengelola stres dengan teknik mindfulness yang terbukti efektif.</p>
+                    <div class="education-content">
+                        <div class="education-meta">
+                            <span><i class="far fa-clock"></i> 5 menit</span>
+                            <span><i class="far fa-folder"></i> Stres</span>
+                        </div>
+                        <h3>5 Cara Mengurangi Stres dalam 10 Menit</h3>
+                        <p>
+                            Pelajari teknik cepat dan efektif untuk mengelola stres di tengah 
+                            kesibukan sehari-hari tanpa perlu waktu lama.
+                        </p>
+                        <a href="post.html" class="read-more">
+                            Baca Selengkapnya
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div style="display: flex; gap: 16px; padding: 20px; border-radius: 16px; background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); cursor: pointer; transition: all 0.2s;">
-                    <div style="width: 80px; height: 80px; border-radius: 12px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; color: white;">
+                <div class="education-card">
+                    <div class="education-image" style="background: linear-gradient(135deg, #10b981 0%, #34d399 100%);">
                         <i class="fas fa-heart"></i>
                     </div>
-                    <div>
-                        <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Pentingnya Self-Care dalam Kehidupan Sehari-hari</h4>
-                        <p style="font-size: 14px; color: #6b7280; line-height: 1.5;">Temukan cara membangun rutinitas self-care yang konsisten dan bermanfaat.</p>
+                    <div class="education-content">
+                        <div class="education-meta">
+                            <span><i class="far fa-clock"></i> 8 menit</span>
+                            <span><i class="far fa-folder"></i> Mindfulness</span>
+                        </div>
+                        <h3>Mindfulness untuk Pemula: Panduan Lengkap</h3>
+                        <p>
+                            Mulai praktik mindfulness dengan panduan step-by-step yang mudah 
+                            diikuti untuk meningkatkan kesadaran diri.
+                        </p>
+                        <a href="#" class="read-more">
+                            Baca Selengkapnya
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div style="display: flex; gap: 16px; padding: 20px; border-radius: 16px; background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); cursor: pointer; transition: all 0.2s;">
-                    <div style="width: 80px; height: 80px; border-radius: 12px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; color: white;">
+                <div class="education-card">
+                    <div class="education-image" style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);">
                         <i class="fas fa-moon"></i>
                     </div>
-                    <div>
-                        <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Tips Meningkatkan Kualitas Tidur</h4>
-                        <p style="font-size: 14px; color: #6b7280; line-height: 1.5;">Dapatkan tidur berkualitas untuk kesehatan mental yang lebih baik.</p>
+                    <div class="education-content">
+                        <div class="education-meta">
+                            <span><i class="far fa-clock"></i> 6 menit</span>
+                            <span><i class="far fa-folder"></i> Tidur</span>
+                        </div>
+                        <h3>Tingkatkan Kualitas Tidur dengan Rutinitas Malam</h3>
+                        <p>
+                            Temukan rahasia tidur berkualitas dengan rutinitas malam yang tepat 
+                            untuk kesehatan mental yang lebih baik.
+                        </p>
+                        <a href="#" class="read-more">
+                            Baca Selengkapnya
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: var(--spacing-2xl);">
+                <a href="edukasi.html" class="btn btn-primary">
+                    <i class="fas fa-book"></i>
+                    Lihat Semua Edukasi
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">TESTIMONI</span>
+                <h2 class="section-title">Apa Kata Pengguna Kami</h2>
+                <p class="section-subtitle">
+                    Dengar cerita inspiratif dari pengguna yang telah merasakan manfaat SatyaJiwa
+                </p>
+            </div>
+
+            <div class="testimonials-slider">
+                <div class="testimonials-track" id="testimonialsTrack">
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-avatar">A</div>
+                                    <div class="testimonial-info">
+                                        <h4>Anisa Rahmawati</h4>
+                                        <p>Mahasiswi, 21 tahun</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">
+                                    "SatyaJiwa benar-benar membantu saya mengelola kecemasan saat menghadapi 
+                                    ujian. Konsultasi online-nya sangat mudah dan psikolognya sangat profesional. 
+                                    Highly recommended!"
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-avatar">B</div>
+                                    <div class="testimonial-info">
+                                        <h4>Budi Santoso</h4>
+                                        <p>Karyawan, 28 tahun</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">
+                                    "Fitur latihan mandiri-nya sangat membantu untuk relaksasi setelah kerja. 
+                                    Interface-nya juga user-friendly dan mood tracker-nya membantu saya lebih 
+                                    memahami kondisi emosional saya."
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-avatar">C</div>
+                                    <div class="testimonial-info">
+                                        <h4>Citra Dewi</h4>
+                                        <p>Ibu Rumah Tangga, 35 tahun</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">
+                                    "Platform yang sangat membantu untuk menjaga kesehatan mental. Konten 
+                                    edukasinya lengkap dan mudah dipahami. Saya merasa lebih tenang dan bahagia 
+                                    setelah rutin menggunakan SatyaJiwa."
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-avatar">D</div>
+                                    <div class="testimonial-info">
+                                        <h4>Dimas Prakoso</h4>
+                                        <p>Pengusaha, 32 tahun</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">
+                                    "Sebagai pengusaha dengan jadwal padat, SatyaJiwa memberikan fleksibilitas 
+                                    yang saya butuhkan. Bisa konsultasi kapan saja dan meditasi guided-nya sangat 
+                                    membantu mengurangi tekanan pekerjaan."
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-avatar">E</div>
+                                    <div class="testimonial-info">
+                                        <h4>Eka Putri</h4>
+                                        <p>Guru, 29 tahun</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">
+                                    "Program gamifikasi di SatyaJiwa membuat saya termotivasi untuk konsisten 
+                                    dalam latihan mental. Setiap pencapaian terasa bermakna dan membantu saya 
+                                    lebih disiplin dalam menjaga kesehatan mental."
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-avatar">F</div>
+                                    <div class="testimonial-info">
+                                        <h4>Fajar Ramadhan</h4>
+                                        <p>Desainer, 26 tahun</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">
+                                    "Desain interface yang menarik dan fitur mood tracker yang insightful. 
+                                    SatyaJiwa membuat perjalanan kesehatan mental terasa modern dan engaging. 
+                                    Aplikasi terbaik yang pernah saya coba!"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-nav">
+                    <button class="carousel-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                    <button class="carousel-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <span class="cta-badge">
+                    <i class="fas fa-sparkles"></i>
+                    Penawaran Terbatas
+                </span>
+                <h2>
+                    Siap Memulai Perjalanan<br>
+                    <span class="highlight">Kesehatan Mental</span> Anda?
+                </h2>
+                <p>
+                    Bergabunglah dengan ribuan pengguna yang telah merasakan manfaat SatyaJiwa. 
+                    Daftar sekarang dan dapatkan konsultasi pertama gratis serta akses ke semua fitur premium!
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="login.html" class="btn btn-white">
+                        <i class="fas fa-rocket"></i>
+                        Daftar Sekarang - Gratis
+                    </a>
+                   
+                </div>
+
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <div class="cta-feature-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h4>Konsultasi Gratis</h4>
+                        <p>Sesi pertama dengan psikolog profesional tanpa biaya</p>
+                    </div>
+                    <div class="cta-feature">
+                        <div class="cta-feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Privasi Terjamin</h4>
+                        <p>Data Anda aman dengan enkripsi end-to-end</p>
+                    </div>
+                    <div class="cta-feature">
+                        <div class="cta-feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>24/7 Akses</h4>
+                        <p>Layanan tersedia kapan saja sesuai kebutuhan Anda</p>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="assets/img/logo.png" alt="SatyaJiwa Logo" style="height: 32px; margin-left: 8px;">
+                            <h3>SatyaJiwa</h3>
+                        </div>
+                        <p>
+                            Platform kesehatan mental terpercaya untuk konsultasi online dan latihan 
+                            mandiri. Kami berkomitmen untuk mendukung kesejahteraan emosional Anda 
+                            dengan layanan profesional dan mudah diakses.
+                        </p>
+
+   
+                    </div>
+                    <div>
+                        <div class="footer-stats">
+                            <div class="footer-stat">
+                                <div class="footer-stat-value">1500+</div>
+                                <div class="footer-stat-label">Pengguna</div>
+                            </div>
+                            <div class="footer-stat">
+                                <div class="footer-stat-value">50+</div>
+                                <div class="footer-stat-label">Psikolog</div>
+                            </div>
+                            <div class="footer-stat">
+                                <div class="footer-stat-value">4.9</div>
+                                <div class="footer-stat-label">Rating</div>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 SatyaJiwa. All rights reserved. Made with <span>❤️</span> for mental wellness.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-
-        function closeSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        }
-
-        function selectMood(element, mood) {
-            // Remove previous selection
-            document.querySelectorAll('.mood-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            
-            // Add selection to clicked element
-            element.classList.add('selected');
-            
-            // Show success message with emoji
-            const moodEmojis = {
-                'buruk': '😭',
-                'kurang': '😔',
-                'biasa': '😐',
-                'baik': '😊',
-                'senang': '😄'
-            };
-            
-            setTimeout(() => {
-                alert(`Mood ${moodEmojis[mood]} berhasil disimpan! Terima kasih telah berbagi perasaanmu hari ini 💙`);
-            }, 400);
-        }
-
-        // Close sidebar when clicking outside on mobile
-        document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('sidebar');
-            const mobileHeader = document.querySelector('.mobile-header');
-            
-            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
-                if (!sidebar.contains(event.target) && !mobileHeader.contains(event.target)) {
-                    closeSidebar();
-                }
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
         });
 
-        // Handle orientation change
-        window.addEventListener('orientationchange', function() {
-            if (window.innerWidth <= 768 && document.getElementById('sidebar').classList.contains('active')) {
-                closeSidebar();
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
+        });
+
+        mobileOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            const icon = mobileToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        document.querySelectorAll('.nav-cta-mobile .btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        const track = document.getElementById('testimonialsTrack');
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('carouselDots');
+        
+        let currentPage = 0;
+        let slidesPerPage = 3;
+        let totalPages = 0;
+
+        function updateSlidesPerPage() {
+            if (window.innerWidth <= 768) {
+                slidesPerPage = 1;
+            } else {
+                slidesPerPage = 3;
+            }
+            totalPages = Math.ceil(slides.length / slidesPerPage);
+            currentPage = Math.min(currentPage, totalPages - 1);
+            
+            // Update slide widths
+            slides.forEach(slide => {
+                if (window.innerWidth <= 768) {
+                    slide.style.flex = '0 0 100%';
+                    slide.style.maxWidth = '100%';
+                } else {
+                    slide.style.flex = '0 0 calc((100% - 48px) / 3)';
+                    slide.style.maxWidth = 'calc((100% - 48px) / 3)';
+                }
+            });
+            
+            updateCarousel();
+            createDots();
+        }
+
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalPages; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('carousel-dot');
+                if (i === currentPage) dot.classList.add('active');
+                dot.addEventListener('click', () => goToPage(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateCarousel() {
+            const gap = 24; 
+            
+            if (window.innerWidth <= 768) {
+                const slideWidth = track.parentElement.offsetWidth;
+                const translateX = -(currentPage * slideWidth);
+                track.style.transform = `translateX(${translateX}px)`;
+            } else {
+                const containerWidth = track.parentElement.offsetWidth;
+                const cardWidth = (containerWidth - (gap * 2)) / 3; 
+                const translateX = -(currentPage * (cardWidth * 3 + gap * 2));
+                track.style.transform = `translateX(${translateX}px)`;
+            }
+            
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentPage);
+            });
+
+            prevBtn.disabled = currentPage === 0;
+            nextBtn.disabled = currentPage >= totalPages - 1;
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+            updateCarousel();
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                updateCarousel();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                updateCarousel();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && currentPage > 0) {
+                currentPage--;
+                updateCarousel();
+            } else if (e.key === 'ArrowRight' && currentPage < totalPages - 1) {
+                currentPage++;
+                updateCarousel();
+            }
+        });
+
+        let autoPlayInterval;
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                if (currentPage < totalPages - 1) {
+                    currentPage++;
+                } else {
+                    currentPage = 0;
+                }
+                updateCarousel();
+            }, 6000);
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        track.addEventListener('mouseenter', stopAutoPlay);
+        track.addEventListener('mouseleave', startAutoPlay);
+
+        updateSlidesPerPage();
+        startAutoPlay();
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                updateSlidesPerPage();
+            }, 250);
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .education-card, .testimonial-card, .cta-feature').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>

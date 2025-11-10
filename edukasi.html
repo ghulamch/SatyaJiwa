@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edukasi - Artikel & Panduan Kesehatan Mental</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/landing.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/img/logo.png" alt="SatyaJiwa Logo" style="height: 40px; margin-left: 8px;">
+                <span class="logo-text">SatyaJiwa</span>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="index.html#beranda" class="nav-link">Beranda</a></li>
+                <li><a href="index.html#tentang" class="nav-link">Tentang</a></li>
+                <li><a href="index.html#fitur" class="nav-link">Fitur</a></li>
+                <li><a href="edukasi.html" class="nav-link">Edukasi</a></li>
+
+                
+                <div class="nav-cta-mobile">
+                    <a href="login.html" class="btn btn-outline">Masuk</a>
+                    <a href="login.html" class="btn btn-primary">Daftar Sekarang</a>
+                </div>
+            </ul>
+
+            <div class="nav-cta">
+                <a href="login.html" class="btn btn-outline">Masuk</a>
+                <a href="login.html" class="btn btn-primary">Daftar Sekarang</a>
+            </div>
+
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <div class="breadcrumb">
+                    <a href="index.html">Beranda</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Edukasi</span>
+                </div>
+                <h1 class="page-title">
+                    Pusat <span class="gradient-text">Edukasi</span> Kesehatan Mental
+                </h1>
+                <p class="page-description">
+                    Temukan artikel, panduan, dan tips dari para ahli untuk membantu Anda 
+                    memahami dan menjaga kesehatan mental dengan lebih baik
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Cari artikel tentang...">
+                </div>
+                <div class="filter-tabs">
+                    <button class="filter-tab active">Semua</button>
+                    <button class="filter-tab">Stres</button>
+                    <button class="filter-tab">Mindfulness</button>
+                    <button class="filter-tab">Tidur</button>
+                    <button class="filter-tab">Kecemasan</button>
+                    <button class="filter-tab">Self-Care</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="articles-section">
+        <div class="container">
+            <div class="articles-grid">
+                <div class="article-card" onclick="window.location.href='artikel-stres.html'">
+                    <div class="article-thumbnail">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="article-body">
+                        <span class="article-category">Stres</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 5 menit</span>
+                            <span><i class="far fa-eye"></i> 1.2k views</span>
+                        </div>
+                        <h3>5 Cara Mengurangi Stres dalam 10 Menit</h3>
+                        <p>
+                            Pelajari teknik cepat dan efektif untuk mengelola stres di tengah 
+                            kesibukan sehari-hari tanpa perlu waktu lama.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">DR</div>
+                                <span class="author-name">Dr. Rina</span>
+                            </div>
+                            <a href="post.html" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail" style="background: linear-gradient(135deg, #10b981 0%, #34d399 100%);">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="article-body">
+                        <span class="article-category">Mindfulness</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 8 menit</span>
+                            <span><i class="far fa-eye"></i> 980 views</span>
+                        </div>
+                        <h3>Mindfulness untuk Pemula: Panduan Lengkap</h3>
+                        <p>
+                            Mulai praktik mindfulness dengan panduan step-by-step yang mudah 
+                            diikuti untuk meningkatkan kesadaran diri.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">PS</div>
+                                <span class="author-name">Psikolog Sarah</span>
+                            </div>
+                            <a href="#" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail" style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="article-body">
+                        <span class="article-category">Tidur</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 6 menit</span>
+                            <span><i class="far fa-eye"></i> 1.5k views</span>
+                        </div>
+                        <h3>Tingkatkan Kualitas Tidur dengan Rutinitas Malam</h3>
+                        <p>
+                            Temukan rahasia tidur berkualitas dengan rutinitas malam yang tepat 
+                            untuk kesehatan mental yang lebih baik.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">DA</div>
+                                <span class="author-name">Dr. Ahmad</span>
+                            </div>
+                            <a href="#" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail" style="background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="article-body">
+                        <span class="article-category">Self-Care</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 7 menit</span>
+                            <span><i class="far fa-eye"></i> 850 views</span>
+                        </div>
+                        <h3>Self-Care Harian untuk Kesehatan Mental Optimal</h3>
+                        <p>
+                            Bangun kebiasaan self-care yang konsisten dengan tips praktis 
+                            yang mudah diterapkan dalam kehidupan sehari-hari.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">LM</div>
+                                <span class="author-name">Lisa M.</span>
+                            </div>
+                            <a href="#" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail" style="background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <div class="article-body">
+                        <span class="article-category">Kecemasan</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 10 menit</span>
+                            <span><i class="far fa-eye"></i> 1.8k views</span>
+                        </div>
+                        <h3>Mengatasi Kecemasan dengan Teknik Pernapasan</h3>
+                        <p>
+                            Pelajari berbagai teknik pernapasan yang terbukti efektif 
+                            mengurangi kecemasan dan meningkatkan ketenangan.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">TW</div>
+                                <span class="author-name">Terapis Wati</span>
+                            </div>
+                            <a href="#" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail" style="background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="article-body">
+                        <span class="article-category">Olahraga</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 9 menit</span>
+                            <span><i class="far fa-eye"></i> 720 views</span>
+                        </div>
+                        <h3>Hubungan Olahraga dan Kesehatan Mental</h3>
+                        <p>
+                            Temukan bagaimana aktivitas fisik dapat meningkatkan mood 
+                            dan mengurangi gejala depresi serta kecemasan.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">BF</div>
+                                <span class="author-name">Budi F.</span>
+                            </div>
+                            <a href="#" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail" style="background: linear-gradient(135deg, #14b8a6 0%, #5eead4 100%);">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="article-body">
+                        <span class="article-category">Mindfulness</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 6 menit</span>
+                            <span><i class="far fa-eye"></i> 640 views</span>
+                        </div>
+                        <h3>Meditasi 5 Menit untuk Hari yang Lebih Tenang</h3>
+                        <p>
+                            Praktik meditasi singkat yang bisa dilakukan kapan saja 
+                            untuk mengembalikan ketenangan pikiran.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">NP</div>
+                                <span class="author-name">Nina P.</span>
+                            </div>
+                            <a href="#" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail" style="background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="article-body">
+                        <span class="article-category">Hubungan</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 12 menit</span>
+                            <span><i class="far fa-eye"></i> 1.1k views</span>
+                        </div>
+                        <h3>Membangun Hubungan Sehat untuk Mental yang Kuat</h3>
+                        <p>
+                            Pelajari cara membangun dan memelihara hubungan yang 
+                            mendukung kesehatan mental Anda.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">RM</div>
+                                <span class="author-name">Dr. Ratna M.</span>
+                            </div>
+                            <a href="#" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail" style="background: linear-gradient(135deg, #06b6d4 0%, #67e8f9 100%);">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="article-body">
+                        <span class="article-category">Produktivitas</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 8 menit</span>
+                            <span><i class="far fa-eye"></i> 920 views</span>
+                        </div>
+                        <h3>Work-Life Balance: Kunci Kesehatan Mental</h3>
+                        <p>
+                            Strategi efektif untuk menyeimbangkan pekerjaan dan kehidupan 
+                            pribadi tanpa mengorbankan kesehatan mental.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">AP</div>
+                                <span class="author-name">Andi P.</span>
+                            </div>
+                            <a href="#" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <span class="cta-badge">
+                    <i class="fas fa-sparkles"></i>
+                    Penawaran Terbatas
+                </span>
+                <h2>
+                    Siap Memulai Perjalanan<br>
+                    <span class="highlight">Kesehatan Mental</span> Anda?
+                </h2>
+                <p>
+                    Bergabunglah dengan ribuan pengguna yang telah merasakan manfaat SatyaJiwa. 
+                    Daftar sekarang dan dapatkan konsultasi pertama gratis serta akses ke semua fitur premium!
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="login.html" class="btn btn-white">
+                        <i class="fas fa-rocket"></i>
+                        Daftar Sekarang - Gratis
+                    </a>
+                </div>
+
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <div class="cta-feature-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h4>Konsultasi Gratis</h4>
+                        <p>Sesi pertama dengan psikolog profesional tanpa biaya</p>
+                    </div>
+                    <div class="cta-feature">
+                        <div class="cta-feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Privasi Terjamin</h4>
+                        <p>Data Anda aman dengan enkripsi end-to-end</p>
+                    </div>
+                    <div class="cta-feature">
+                        <div class="cta-feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>24/7 Akses</h4>
+                        <p>Layanan tersedia kapan saja sesuai kebutuhan Anda</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="assets/img/logo.png" alt="SatyaJiwa Logo" style="height: 32px; margin-left: 8px;">
+                            <h3>SatyaJiwa</h3>
+                        </div>
+                        <p>
+                            Platform kesehatan mental terpercaya untuk konsultasi online dan latihan 
+                            mandiri. Kami berkomitmen untuk mendukung kesejahteraan emosional Anda 
+                            dengan layanan profesional dan mudah diakses.
+                        </p>
+
+   
+                    </div>
+                    <div>
+                        <div class="footer-stats">
+                            <div class="footer-stat">
+                                <div class="footer-stat-value">1500+</div>
+                                <div class="footer-stat-label">Pengguna</div>
+                            </div>
+                            <div class="footer-stat">
+                                <div class="footer-stat-value">50+</div>
+                                <div class="footer-stat-label">Psikolog</div>
+                            </div>
+                            <div class="footer-stat">
+                                <div class="footer-stat-value">4.9</div>
+                                <div class="footer-stat-label">Rating</div>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 SatyaJiwa. All rights reserved. Made with <span>❤️</span> for mental wellness.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const mobileOverlay = document.querySelector('.mobile-overlay');
+
+        if (mobileToggle && navMenu && mobileOverlay) {
+            mobileToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                navMenu.classList.toggle('active');
+                mobileOverlay.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+                
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    if (navMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+
+            mobileOverlay.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            const navLinks = navMenu.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    mobileOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                    
+                    const icon = mobileToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        }
+
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        if (filterTabs.length > 0) {
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                });
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
