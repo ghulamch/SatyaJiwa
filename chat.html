@@ -12,34 +12,26 @@
 
 </head>
 <body>
-    <!-- Overlay -->
     <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
 
-    <!-- Mobile Header -->
     <header class="mobile-header">
         <div class="mobile-toggle" onclick="toggleSidebar()">
             <i class="fas fa-bars"></i>
         </div>
         <div class="mobile-logo">
-            <div class="mobile-logo-icon">
-                <i class="fas fa-brain"></i>
-            </div>
+            <img src="assets/img/logo.png" alt="SatyaJiwa Logo" class="mobile-logo-img" style="width: 40px;">
             <div class="mobile-logo-text">SatyaJiwa</div>
         </div>
     </header>
 
-    <!-- Mobile Chat List Toggle -->
     <div class="mobile-chat-list-toggle" onclick="toggleChatList()">
         <i class="fas fa-comments"></i>
     </div>
 
-    <!-- Sidebar -->
     <div id="sidebar-container"></div>
 
-    <!-- Main Content -->
     <main class="main-content">
         <div class="chat-container">
-            <!-- Chat List -->
             <div class="chat-list" id="chatList">
                 <div class="chat-list-header">
                     <h2 class="chat-list-title">Pesan</h2>
@@ -102,7 +94,6 @@
                 </div>
             </div>
 
-            <!-- Chat Window -->
             <div class="chat-window">
                 <div class="chat-window-header">
                     <div class="chat-window-info">
@@ -120,7 +111,7 @@
                     </div>
 
                     <div class="chat-actions">
-                        <button class="chat-action-btn" onclick="alert('Mulai video call')">
+                        <button class="chat-action-btn" onclick="window.location.href='video-call.html'">
                             <i class="fas fa-video"></i>
                         </button>
                         <button class="chat-action-btn" onclick="alert('Mulai voice call')">
@@ -300,13 +291,11 @@
             }
         }
 
-        // Auto-resize textarea
         document.getElementById('chatInput').addEventListener('input', function() {
             this.style.height = '44px';
             this.style.height = Math.min(this.scrollHeight, 120) + 'px';
         });
 
-        // Send with Enter
         document.getElementById('chatInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
@@ -314,13 +303,11 @@
             }
         });
 
-        // Auto-scroll to bottom
         window.addEventListener('load', function() {
             const messages = document.getElementById('chatMessages');
             messages.scrollTop = messages.scrollHeight;
         });
 
-        // Close sidebar when clicking outside on mobile
         document.addEventListener('click', function(event) {
             const sidebar = document.getElementById('sidebar');
             const chatList = document.getElementById('chatList');
@@ -328,14 +315,12 @@
             const chatToggle = document.querySelector('.mobile-chat-list-toggle');
             
             if (window.innerWidth <= 768) {
-                // Close sidebar
                 if (sidebar.classList.contains('active')) {
                     if (!sidebar.contains(event.target) && !mobileHeader.contains(event.target)) {
                         closeSidebar();
                     }
                 }
                 
-                // Close chat list
                 if (chatList.classList.contains('show')) {
                     if (!chatList.contains(event.target) && !chatToggle.contains(event.target)) {
                         chatList.classList.remove('show');
@@ -344,7 +329,6 @@
             }
         });
 
-        // Handle orientation change
         window.addEventListener('orientationchange', function() {
             if (window.innerWidth <= 768) {
                 closeSidebar();

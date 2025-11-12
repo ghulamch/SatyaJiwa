@@ -1,0 +1,254 @@
+.mood-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 20px !important;
+    margin-top: 24px !important;
+    list-style: none !important;
+}
+
+.mood-option {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 32px 16px !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%) !important;
+    border: 2px solid #e5e7eb !important;
+    border-radius: 24px !important;
+    cursor: pointer !important;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+.mood-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.mood-option:hover::before {
+    opacity: 1;
+}
+
+.mood-option::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: 0;
+}
+
+.mood-option:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+.mood-option:hover {
+    transform: translateY(-10px) scale(1.03) !important;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(99, 102, 241, 0.1) !important;
+    border-color: rgba(99, 102, 241, 0.4) !important;
+}
+
+.mood-option.selected {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%) !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.3), 0 0 0 4px rgba(99, 102, 241, 0.1), inset 0 2px 0 rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-6px) scale(1.06) !important;
+}
+
+.checkmark-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 3;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.5);
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.mood-option.selected .checkmark-badge {
+    opacity: 1 !important;
+    transform: scale(1) rotate(0deg) !important;
+}
+
+.mood-emoji {
+    font-size: 64px !important;
+    margin-bottom: 14px !important;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    line-height: 1 !important;
+    filter: grayscale(0.2);
+    z-index: 1;
+    position: relative;
+}
+
+.mood-option:hover .mood-emoji {
+    transform: scale(1.25) rotate(8deg) !important;
+    filter: grayscale(0) drop-shadow(0 6px 16px rgba(0, 0, 0, 0.2));
+}
+
+.mood-option.selected .mood-emoji {
+    transform: scale(1.3) rotate(0deg) !important;
+    animation: bounceEmoji 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    filter: grayscale(0) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+}
+
+.mood-label {
+    font-size: 15px;
+    color: #6b7280;
+    font-weight: 600;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+.mood-option:hover .mood-label {
+    color: #374151;
+    transform: scale(1.08);
+    font-weight: 700;
+}
+
+.mood-option.selected .mood-label {
+    color: #6366f1 !important;
+    font-weight: 700;
+    transform: scale(1.05);
+}
+
+.mood-option:active {
+    transform: translateY(-4px) scale(1) !important;
+}
+
+.mood-option[data-mood="buruk"]:hover {
+    border-color: #dc2626 !important;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(239, 68, 68, 0.1) 100%) !important;
+}
+
+.mood-option[data-mood="buruk"].selected {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.18) 0%, rgba(239, 68, 68, 0.18) 100%) !important;
+    border-color: #dc2626 !important;
+    box-shadow: 0 12px 40px rgba(220, 38, 38, 0.35), 0 0 0 4px rgba(220, 38, 38, 0.15) !important;
+}
+
+.mood-option[data-mood="buruk"].selected .checkmark-badge {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.5);
+}
+
+.mood-option[data-mood="buruk"].selected .mood-label {
+    color: #dc2626 !important;
+}
+
+.mood-option[data-mood="kurang"]:hover {
+    border-color: #f59e0b !important;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(251, 191, 36, 0.1) 100%) !important;
+}
+
+.mood-option[data-mood="kurang"].selected {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(251, 191, 36, 0.18) 100%) !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 12px 40px rgba(245, 158, 11, 0.35), 0 0 0 4px rgba(245, 158, 11, 0.15) !important;
+}
+
+.mood-option[data-mood="kurang"].selected .checkmark-badge {
+    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.5);
+}
+
+.mood-option[data-mood="kurang"].selected .mood-label {
+    color: #f59e0b !important;
+}
+
+.mood-option[data-mood="biasa"]:hover {
+    border-color: #6b7280 !important;
+    background: linear-gradient(135deg, rgba(107, 114, 128, 0.1) 0%, rgba(156, 163, 175, 0.1) 100%) !important;
+}
+
+.mood-option[data-mood="biasa"].selected {
+    background: linear-gradient(135deg, rgba(107, 114, 128, 0.18) 0%, rgba(156, 163, 175, 0.18) 100%) !important;
+    border-color: #6b7280 !important;
+    box-shadow: 0 12px 40px rgba(107, 114, 128, 0.35), 0 0 0 4px rgba(107, 114, 128, 0.15) !important;
+}
+
+.mood-option[data-mood="biasa"].selected .checkmark-badge {
+    background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
+    box-shadow: 0 4px 16px rgba(107, 114, 128, 0.5);
+}
+
+.mood-option[data-mood="biasa"].selected .mood-label {
+    color: #6b7280 !important;
+}
+
+.mood-option[data-mood="baik"]:hover {
+    border-color: #10b981 !important;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(52, 211, 153, 0.1) 100%) !important;
+}
+
+.mood-option[data-mood="baik"].selected {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.18) 0%, rgba(52, 211, 153, 0.18) 100%) !important;
+    border-color: #10b981 !important;
+    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.35), 0 0 0 4px rgba(16, 185, 129, 0.15) !important;
+}
+
+.mood-option[data-mood="baik"].selected .checkmark-badge {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.5);
+}
+
+.mood-option[data-mood="baik"].selected .mood-label {
+    color: #10b981 !important;
+}
+
+.mood-option[data-mood="senang"]:hover {
+    border-color: #3b82f6 !important;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(96, 165, 250, 0.1) 100%) !important;
+}
+
+.mood-option[data-mood="senang"].selected {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.18) 0%, rgba(96, 165, 250, 0.18) 100%) !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.35), 0 0 0 4px rgba(59, 130, 246, 0.15) !important;
+}
+
+.mood-option[data-mood="senang"].selected .checkmark-badge {
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.5);
+}
+
+.mood-option[data-mood="senang"].selected .mood-label {
+    color: #3b82f6 !important;
+}
+
+.mood-option.selected {
+    animation: gentlePulse 2.5s ease-in-out infinite;
+}
+
+.mood-option.selected::before {
+    animation: sparkle 2s ease-in-out infinite;
+}

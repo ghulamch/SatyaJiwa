@@ -306,7 +306,7 @@
                         <p style="font-size: 14px; color: var(--gray-600); margin-bottom: var(--spacing-md);">
                             Konsultasikan masalah stres Anda dengan psikolog berpengalaman kami
                         </p>
-                        <a href="#" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 14px; padding: 12px 20px;">
+                        <a href="login.html" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 14px; padding: 12px 20px;">
                             <i class="fas fa-calendar-check"></i>
                             Jadwalkan Konsultasi
                         </a>
@@ -548,7 +548,6 @@
                 }
             });
 
-            // Close menu when clicking nav links
             const navLinks = navMenu.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
@@ -565,7 +564,6 @@
             });
         }
 
-        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (navbar) {
@@ -577,7 +575,6 @@
             }
         });
 
-        // Copy Link Function
         function copyLink() {
             const url = window.location.href;
             navigator.clipboard.writeText(url).then(() => {
@@ -590,7 +587,6 @@
             });
         }
 
-        // Smooth Scroll for Table of Contents
         document.querySelectorAll('.table-of-contents a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -607,7 +603,6 @@
             });
         });
 
-        // Share Buttons Functionality
         document.querySelector('.share-btn-facebook').addEventListener('click', () => {
             const url = encodeURIComponent(window.location.href);
             window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');

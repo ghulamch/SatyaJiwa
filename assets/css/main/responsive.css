@@ -1,0 +1,463 @@
+@media (max-width: 1024px) {
+    .main-content {
+        padding: var(--spacing-lg);
+    }
+    
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .schedule-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .chat-list {
+        width: 300px;
+    }
+    
+    .doctor-list {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    .tutorial-card {
+        grid-template-columns: 1fr;
+    }
+
+    .tutorial-animation {
+        min-height: 240px;
+    }
+
+    .mood-grid {
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 16px !important;
+    }
+    
+    .mood-option {
+        padding: 24px 12px !important;
+    }
+    
+    .mood-emoji {
+        font-size: 52px !important;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .settings-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .settings-sidebar {
+        position: static;
+        width: 100%;
+    }
+
+    .settings-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        padding: var(--spacing-sm);
+    }
+
+    .settings-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .settings-nav-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+        min-width: auto;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .theme-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .subscription-actions {
+        flex-direction: column;
+    }
+
+    .security-item,
+    .notification-item,
+    .privacy-item,
+    .preference-item {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        padding-top: 80px;
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .sidebar .logo-area {
+        display: none;
+    }
+    
+    .mobile-header {
+        display: flex;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: var(--spacing-lg) var(--spacing-md);
+        padding-top: 88px;
+    }
+    
+    .page-title {
+        font-size: 24px;
+    }
+    
+    .hero-content h1 {
+        font-size: 28px;
+    }
+    
+    .stats-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .card {
+        padding: var(--spacing-lg);
+    }
+    
+    .user-profile {
+        margin: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+    
+    .chat-container {
+        height: calc(100vh - 64px);
+    }
+    
+    .chat-list {
+        position: fixed;
+        left: 0;
+        top: 64px;
+        height: calc(100vh - 64px);
+        z-index: 98;
+        transform: translateX(-100%);
+        transition: transform var(--transition-base);
+        width: 100%;
+        max-width: 360px;
+    }
+    
+    .chat-list.show {
+        transform: translateX(0);
+    }
+    
+    .mobile-chat-list-toggle {
+        display: flex;
+    }
+    
+    .message-content {
+        max-width: 75%;
+    }
+    
+    .tab-nav {
+        width: 100%;
+        overflow-x: auto;
+        scrollbar-width: none;
+        flex-wrap: nowrap;
+    }
+    
+    .tab-nav::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .tab-btn {
+        flex-shrink: 0;
+    }
+    
+    .progress-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-container {
+        height: 280px;
+    }
+    
+    .calendar-days {
+        gap: 4px;
+    }
+    
+    .calendar-date {
+        font-size: 13px;
+    }
+    
+    .doctor-list {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-meditation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tutorial-grid {
+        gap: var(--spacing-lg);
+    }
+
+    .tutorial-card {
+        padding: var(--spacing-lg);
+    }
+
+    .meditation-modal-content {
+        padding: var(--spacing-xl);
+    }
+
+    .meditation-visual {
+        width: 240px;
+        height: 240px;
+    }
+
+    .meditation-timer {
+        font-size: 36px;
+    }
+
+    .mood-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 14px !important;
+    }
+    
+    .mood-emoji {
+        font-size: 48px !important;
+    }
+
+    .mood-option {
+        padding: 20px 10px !important;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .settings-container {
+        gap: var(--spacing-md);
+    }
+
+    .settings-nav {
+        gap: var(--spacing-xs);
+        padding: 4px;
+    }
+
+    .settings-nav-btn {
+        padding: 10px 12px;
+        font-size: 14px;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 70px;
+    }
+
+    .settings-nav-btn i {
+        font-size: 20px;
+    }
+
+    .settings-nav-btn span {
+        font-size: 12px;
+    }
+
+    .profile-photo-section {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-lg);
+    }
+
+    .photo-placeholder {
+        width: 100px;
+        height: 100px;
+        font-size: 40px;
+    }
+
+    .form-actions,
+    .subscription-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn,
+    .subscription-actions .btn {
+        width: 100%;
+    }
+
+    .device-item {
+        flex-wrap: wrap;
+    }
+
+    .device-status {
+        width: 100%;
+        text-align: center;
+    }
+
+    .payment-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .payment-amount {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .data-action-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .data-action-item .btn {
+        width: 100%;
+    }
+
+    .security-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .security-item .btn,
+    .security-item .toggle-switch {
+        margin-left: auto;
+    }
+
+    .theme-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: var(--spacing-md) var(--spacing-sm);
+        padding-top: 84px;
+    }
+    
+    .page-title {
+        font-size: 20px;
+    }
+    
+    .hero-section {
+        padding: var(--spacing-lg);
+    }
+    
+    .hero-content h1 {
+        font-size: 24px;
+    }
+    
+    .card {
+        padding: var(--spacing-md);
+        border-radius: var(--radius-lg);
+    }
+    
+    .chat-window-header {
+        padding: var(--spacing-md);
+    }
+    
+    .chat-messages {
+        padding: var(--spacing-md);
+    }
+    
+    .message-content {
+        max-width: 80%;
+    }
+    
+    .chat-input-container {
+        padding: var(--spacing-md);
+    }
+    
+    .mobile-chat-list-toggle {
+        width: 56px;
+        height: 56px;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    .mood-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+    
+    .mood-option {
+        padding: 18px 8px !important;
+    }
+    
+    .mood-emoji {
+        font-size: 44px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .mood-label {
+        font-size: 13px;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .settings-nav-btn {
+        min-width: 65px;
+        padding: 8px 10px;
+    }
+
+    .settings-nav-btn i {
+        font-size: 18px;
+    }
+
+    .settings-nav-btn span {
+        font-size: 11px;
+    }
+
+    .profile-photo-section {
+        padding: var(--spacing-md);
+    }
+
+    .photo-placeholder {
+        width: 80px;
+        height: 80px;
+        font-size: 32px;
+    }
+
+    .subscription-header {
+        padding: var(--spacing-lg);
+    }
+
+    .subscription-badge {
+        width: 64px;
+        height: 64px;
+        font-size: 28px;
+    }
+
+    .subscription-header h2 {
+        font-size: 22px;
+    }
+
+    .password-modal-content {
+        padding: var(--spacing-lg);
+    }
+
+    .modal-header h2 {
+        font-size: 20px;
+    }
+}
+
+@media print {
+    .sidebar,
+    .mobile-header,
+    .mobile-toggle,
+    .overlay {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 0;
+    }
+}

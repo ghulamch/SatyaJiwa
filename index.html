@@ -12,7 +12,6 @@
     <link rel="icon" href="assets/img/logo.png" type="image/png">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">
@@ -108,7 +107,6 @@
     </section>
 
 
-    <!-- Features Section -->
     <section class="features" id="fitur">
         <div class="container">
             <div class="section-header">
@@ -637,7 +635,6 @@
             totalPages = Math.ceil(slides.length / slidesPerPage);
             currentPage = Math.min(currentPage, totalPages - 1);
             
-            // Update slide widths
             slides.forEach(slide => {
                 if (window.innerWidth <= 768) {
                     slide.style.flex = '0 0 100%';

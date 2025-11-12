@@ -11,7 +11,6 @@
     <link rel="icon" href="assets/img/logo.png" type="image/png">
 
     <style>
-        /* Pastikan sidebar bisa toggle di mobile */
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -40,32 +39,26 @@
     </style>
 </head>
 <body>
-    <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Mobile Header -->
     <header class="mobile-header">
-        <div class="mobile-toggle" id="mobileToggle">
+        <div class="mobile-toggle" onclick="toggleSidebar()">
             <i class="fas fa-bars"></i>
         </div>
         <div class="mobile-logo">
-            <div class="mobile-logo-icon">🧠</div>
-            <span class="mobile-logo-text">SatyaJiwa</span>
+            <img src="assets/img/logo.png" alt="SatyaJiwa Logo" class="mobile-logo-img" style="width: 40px;">
+            <div class="mobile-logo-text">SatyaJiwa</div>
         </div>
     </header>
 
-    <!-- Sidebar Navigation -->
     <div id="sidebar-container"></div>
 
-    <!-- Main Content -->
     <main class="main-content">
-        <!-- Page Header -->
         <div class="page-header">
             <h1 class="page-title">Pengaturan</h1>
             <p class="page-subtitle">Kelola profil dan preferensi akun Anda</p>
         </div>
 
-        <!-- Settings Navigation -->
         <div class="settings-container">
             <div class="settings-sidebar">
                 <div class="settings-nav">
@@ -85,15 +78,10 @@
                         <i class="fas fa-lock"></i>
                         <span>Privasi</span>
                     </button>
-                    <button class="settings-nav-btn" data-tab="subscription">
-                        <i class="fas fa-crown"></i>
-                        <span>Langganan</span>
-                    </button>
                 </div>
             </div>
 
             <div class="settings-content">
-                <!-- Profile Tab -->
                 <div class="settings-tab active" id="profile-tab">
                     <div class="card">
                         <div class="card-header">
@@ -173,7 +161,6 @@
                     </div>
                 </div>
 
-                <!-- Account Security Tab -->
                 <div class="settings-tab" id="account-tab">
                     <div class="card mb-lg">
                         <div class="card-header">
@@ -207,19 +194,6 @@
                             </label>
                         </div>
 
-                        <div class="security-item">
-                            <div class="security-info">
-                                <h3>
-                                    <i class="fas fa-fingerprint"></i>
-                                    Login Biometrik
-                                </h3>
-                                <p>Gunakan sidik jari atau face ID untuk login</p>
-                            </div>
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="biometricToggle">
-                                <span class="toggle-slider"></span>
-                            </label>
-                        </div>
                     </div>
 
                     <div class="card">
@@ -268,7 +242,6 @@
                     </div>
                 </div>
 
-                <!-- Notifications Tab -->
                 <div class="settings-tab" id="notifications-tab">
                     <div class="card">
                         <div class="card-header">
@@ -382,39 +355,10 @@
                     </div>
                 </div>
 
-                <!-- Privacy Tab -->
                 <div class="settings-tab" id="privacy-tab">
                     <div class="card mb-lg">
                         <div class="card-header">
                             <h2 class="card-title">Pengaturan Privasi</h2>
-                        </div>
-
-                        <div class="privacy-item">
-                            <div class="privacy-info">
-                                <h3>
-                                    <i class="fas fa-user-shield"></i>
-                                    Profil Publik
-                                </h3>
-                                <p>Tampilkan profil Anda kepada pengguna lain</p>
-                            </div>
-                            <label class="toggle-switch">
-                                <input type="checkbox">
-                                <span class="toggle-slider"></span>
-                            </label>
-                        </div>
-
-                        <div class="privacy-item">
-                            <div class="privacy-info">
-                                <h3>
-                                    <i class="fas fa-chart-line"></i>
-                                    Bagikan Progress
-                                </h3>
-                                <p>Izinkan konselor melihat riwayat progress Anda</p>
-                            </div>
-                            <label class="toggle-switch">
-                                <input type="checkbox" checked>
-                                <span class="toggle-slider"></span>
-                            </label>
                         </div>
 
                         <div class="privacy-item">
@@ -463,17 +407,6 @@
                                 <button class="btn btn-outline">Unduh</button>
                             </div>
 
-                            <div class="data-action-item">
-                                <div class="data-action-info">
-                                    <h4>
-                                        <i class="fas fa-file-alt"></i>
-                                        Riwayat Aktivitas
-                                    </h4>
-                                    <p>Lihat riwayat lengkap aktivitas akun Anda</p>
-                                </div>
-                                <button class="btn btn-outline">Lihat</button>
-                            </div>
-
                             <div class="data-action-item danger">
                                 <div class="data-action-info">
                                     <h4>
@@ -487,113 +420,10 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Subscription Tab -->
-                <div class="settings-tab" id="subscription-tab">
-                    <div class="card mb-lg">
-                        <div class="subscription-header">
-                            <div class="subscription-badge">
-                                <i class="fas fa-crown"></i>
-                            </div>
-                            <h2>Paket Premium</h2>
-                            <p>Member sejak 15 Januari 2024</p>
-                        </div>
-
-                        <div class="subscription-benefits">
-                            <div class="benefit-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Chat tanpa batas dengan konselor</span>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Akses ke semua program meditasi</span>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Konsultasi video 1-on-1</span>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Laporan progress detail</span>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Prioritas dukungan pelanggan</span>
-                            </div>
-                        </div>
-
-                        <div class="subscription-info">
-                            <div class="info-row">
-                                <span>Paket Saat Ini</span>
-                                <strong>Premium Annual</strong>
-                            </div>
-                            <div class="info-row">
-                                <span>Harga</span>
-                                <strong>Rp 999.000/tahun</strong>
-                            </div>
-                            <div class="info-row">
-                                <span>Perpanjangan Berikutnya</span>
-                                <strong>15 Januari 2025</strong>
-                            </div>
-                            <div class="info-row">
-                                <span>Metode Pembayaran</span>
-                                <strong>•••• •••• •••• 4242</strong>
-                            </div>
-                        </div>
-
-                        <div class="subscription-actions">
-                            <button class="btn btn-primary">
-                                <i class="fas fa-credit-card"></i> Ubah Metode Pembayaran
-                            </button>
-                            <button class="btn btn-outline">
-                                <i class="fas fa-sync-alt"></i> Ubah Paket
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <h2 class="card-title">Riwayat Pembayaran</h2>
-                        </div>
-
-                        <div class="payment-history">
-                            <div class="payment-item">
-                                <div class="payment-info">
-                                    <h4>Premium Annual Subscription</h4>
-                                    <p>15 Januari 2024</p>
-                                </div>
-                                <div class="payment-amount">
-                                    <span>Rp 999.000</span>
-                                    <button class="btn-text">
-                                        <i class="fas fa-download"></i> Invoice
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="payment-item">
-                                <div class="payment-info">
-                                    <h4>Premium Annual Subscription</h4>
-                                    <p>15 Januari 2023</p>
-                                </div>
-                                <div class="payment-amount">
-                                    <span>Rp 899.000</span>
-                                    <button class="btn-text">
-                                        <i class="fas fa-download"></i> Invoice
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-outline" style="width: 100%; margin-top: 16px;">
-                            Lihat Semua Riwayat
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </main>
 
-    <!-- Password Change Modal -->
     <div class="password-modal" id="passwordModal">
         <div class="password-modal-content">
             <div class="modal-header">
@@ -633,46 +463,20 @@
     </div>
 
     <script>
-        // ========================================
-        // MOBILE TOGGLE - FIXED VERSION
-        // ========================================
-        
-        const sidebar = document.getElementById('sidebar');
-        const mobileToggle = document.getElementById('mobileToggle');
-        const overlay = document.getElementById('overlay');
-
-        // Toggle Sidebar Function
         function toggleSidebar() {
-            if (sidebar && overlay) {
-                sidebar.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.classList.toggle('sidebar-open');
-            }
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
         }
 
-        // Close Sidebar Function
         function closeSidebar() {
-            if (sidebar && overlay) {
-                sidebar.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.classList.remove('sidebar-open');
-            }
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
         }
-
-        // Event listener untuk mobile toggle button
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', function(e) {
-                e.stopPropagation();
-                toggleSidebar();
-            });
-        }
-
-        // Event listener untuk overlay
-        if (overlay) {
-            overlay.addEventListener('click', closeSidebar);
-        }
-
-        // Close sidebar saat click di luar (hanya di mobile)
+        
         document.addEventListener('click', function(event) {
             if (window.innerWidth <= 768) {
                 const mobileHeader = document.querySelector('.mobile-header');
@@ -686,18 +490,12 @@
             }
         });
 
-        // Handle window resize
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 closeSidebar();
             }
         });
 
-        // ========================================
-        // SETTINGS FUNCTIONS
-        // ========================================
-
-        // Settings Navigation
         const settingsNavBtns = document.querySelectorAll('.settings-nav-btn');
         const settingsTabs = document.querySelectorAll('.settings-tab');
 
@@ -705,17 +503,14 @@
             btn.addEventListener('click', () => {
                 const tabName = btn.getAttribute('data-tab');
                 
-                // Remove active class from all buttons and tabs
                 settingsNavBtns.forEach(b => b.classList.remove('active'));
                 settingsTabs.forEach(t => t.classList.remove('active'));
                 
-                // Add active class to clicked button and corresponding tab
                 btn.classList.add('active');
                 document.getElementById(`${tabName}-tab`).classList.add('active');
             });
         });
 
-        // Password Modal
         function openPasswordModal() {
             document.getElementById('passwordModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -726,7 +521,6 @@
             document.body.style.overflow = '';
         }
 
-        // Form Submission
         document.querySelectorAll('form').forEach(form => {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
@@ -734,7 +528,6 @@
             });
         });
 
-        // Toggle Switches
         document.querySelectorAll('.toggle-switch input').forEach(toggle => {
             toggle.addEventListener('change', (e) => {
                 console.log('Toggle changed:', e.target.checked);

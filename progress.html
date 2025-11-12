@@ -11,34 +11,26 @@
     <link rel="icon" href="assets/img/logo.png" type="image/png">
 </head>
 <body>
-    <!-- Overlay -->
     <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
 
-    <!-- Mobile Header -->
     <header class="mobile-header">
         <div class="mobile-toggle" onclick="toggleSidebar()">
             <i class="fas fa-bars"></i>
         </div>
         <div class="mobile-logo">
-            <div class="mobile-logo-icon">
-                <i class="fas fa-brain"></i>
-            </div>
+            <img src="assets/img/logo.png" alt="SatyaJiwa Logo" class="mobile-logo-img" style="width: 40px;">
             <div class="mobile-logo-text">SatyaJiwa</div>
         </div>
     </header>
 
-    <!-- Sidebar -->
     <div id="sidebar-container"></div>
 
-    <!-- Main Content -->
     <main class="main-content">
-        <!-- Page Header -->
         <div class="page-header">
             <h1 class="page-title">Progress Saya</h1>
             <p class="page-subtitle">Pantau perkembangan kesehatan mental Anda</p>
         </div>
 
-        <!-- Tab Navigation -->
         <div class="tab-nav">
             <button class="tab-btn active" onclick="switchTab('overview')">
                 <i class="fas fa-chart-pie"></i>
@@ -58,9 +50,7 @@
             </button>
         </div>
 
-        <!-- Overview Tab -->
         <div id="overview-tab">
-            <!-- Progress Overview -->
             <div class="progress-grid">
                 <div class="progress-card">
                     <div class="progress-header">
@@ -127,7 +117,6 @@
                 </div>
             </div>
 
-            <!-- Mood Chart -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Grafik Mood 30 Hari Terakhir</h3>
@@ -142,7 +131,6 @@
                 </div>
             </div>
 
-            <!-- Activity Chart -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Aktivitas Mingguan</h3>
@@ -153,7 +141,6 @@
             </div>
         </div>
 
-        <!-- Mood Tab (Hidden by default) -->
         <div id="mood-tab" style="display: none;">
             <div class="card">
                 <div class="card-header">
@@ -229,7 +216,6 @@
             </div>
         </div>
 
-        <!-- Sessions Tab (Hidden by default) -->
         <div id="sessions-tab" style="display: none;">
             <div class="card">
                 <div class="card-header">
@@ -295,7 +281,6 @@
             </div>
         </div>
 
-        <!-- Achievements Tab (Hidden by default) -->
         <div id="achievements-tab" style="display: none;">
             <div class="card">
                 <div class="card-header">
@@ -371,40 +356,32 @@
         }
 
         function switchTab(tab) {
-            // Hide all tabs
             document.getElementById('overview-tab').style.display = 'none';
             document.getElementById('mood-tab').style.display = 'none';
             document.getElementById('sessions-tab').style.display = 'none';
             document.getElementById('achievements-tab').style.display = 'none';
 
-            // Remove active class from all buttons
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
 
-            // Show selected tab and activate button
             document.getElementById(tab + '-tab').style.display = 'block';
             event.target.closest('.tab-btn').classList.add('active');
 
-            // Close sidebar on mobile after tab switch
             if (window.innerWidth <= 768) {
                 closeSidebar();
             }
         }
 
         function changeChartPeriod(days) {
-            // Remove active class from all filter buttons
             event.target.parentElement.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            // Add active class to clicked button
             event.target.classList.add('active');
             
-            // In real app, this would update the chart data
             console.log('Changing chart period to ' + days + ' days');
         }
 
-        // Simple chart drawing
         function drawMoodChart() {
             const canvas = document.getElementById('moodChart');
             if (!canvas) return;
@@ -420,10 +397,8 @@
             const maxValue = 10;
             const stepX = chartWidth / (data.length - 1);
 
-            // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Draw grid
             ctx.strokeStyle = '#e2e8f0';
             ctx.lineWidth = 1;
             for (let i = 0; i <= 5; i++) {
@@ -434,7 +409,6 @@
                 ctx.stroke();
             }
 
-            // Draw line
             ctx.strokeStyle = '#667eea';
             ctx.lineWidth = 3;
             ctx.lineCap = 'round';
@@ -453,7 +427,6 @@
             });
             ctx.stroke();
 
-            // Draw gradient fill
             const gradient = ctx.createLinearGradient(0, padding, 0, canvas.height - padding);
             gradient.addColorStop(0, 'rgba(102, 126, 234, 0.2)');
             gradient.addColorStop(1, 'rgba(102, 126, 234, 0)');
@@ -475,7 +448,6 @@
             ctx.closePath();
             ctx.fill();
 
-            // Draw points
             ctx.fillStyle = '#667eea';
             data.forEach((value, index) => {
                 const x = padding + stepX * index;
@@ -486,19 +458,16 @@
                 ctx.fill();
             });
 
-            // Draw labels
             ctx.fillStyle = '#64748b';
             ctx.font = '12px Poppins';
             ctx.textAlign = 'center';
             
-            // X-axis labels
             const labels = ['1', '5', '10', '15', '20', '25', '30'];
             labels.forEach((label, index) => {
                 const x = padding + (stepX * (data.length - 1) / 6) * index;
                 ctx.fillText(label, x, canvas.height - padding + 20);
             });
 
-            // Y-axis labels
             ctx.textAlign = 'right';
             for (let i = 0; i <= 5; i++) {
                 const y = padding + (chartHeight / 5) * i;
@@ -531,46 +500,38 @@
             const barWidth = chartWidth / data.length - 20;
             const maxValue = 100;
 
-            // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Draw bars
             data.forEach((item, index) => {
                 const x = padding + (chartWidth / data.length) * index + 10;
                 const barHeight = (item.value / maxValue) * chartHeight;
                 const y = canvas.height - padding - barHeight;
 
-                // Gradient
                 const gradient = ctx.createLinearGradient(0, y, 0, canvas.height - padding);
                 gradient.addColorStop(0, '#667eea');
                 gradient.addColorStop(1, '#764ba2');
 
-                // Bar with rounded corners
                 ctx.fillStyle = gradient;
                 ctx.beginPath();
                 ctx.roundRect(x, y, barWidth, barHeight, [8, 8, 0, 0]);
                 ctx.fill();
 
-                // Label
                 ctx.fillStyle = '#64748b';
                 ctx.font = '12px Poppins';
                 ctx.textAlign = 'center';
                 ctx.fillText(item.label, x + barWidth / 2, canvas.height - padding + 20);
 
-                // Value
                 ctx.fillStyle = '#1e293b';
                 ctx.font = '600 12px Poppins';
                 ctx.fillText(item.value + 'm', x + barWidth / 2, y - 8);
             });
         }
 
-        // Initialize charts
         window.addEventListener('load', function() {
             drawMoodChart();
             drawActivityChart();
         });
 
-        // Redraw charts on resize with debounce
         let resizeTimer;
         window.addEventListener('resize', function() {
             clearTimeout(resizeTimer);
@@ -580,7 +541,6 @@
             }, 250);
         });
 
-        // Close sidebar when clicking outside on mobile
         document.addEventListener('click', function(event) {
             const sidebar = document.getElementById('sidebar');
             const mobileHeader = document.querySelector('.mobile-header');
@@ -592,7 +552,6 @@
             }
         });
 
-        // Handle orientation change
         window.addEventListener('orientationchange', function() {
             setTimeout(function() {
                 drawMoodChart();

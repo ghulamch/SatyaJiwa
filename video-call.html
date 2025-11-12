@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Call - Konsultasi dengan Dr. Sarah Wijaya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="assets/img/logo.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #111827;
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-main {
+            position: relative;
+            flex: 1;
+            background: #1f2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        }
+
+        .doctor-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 24px;
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .doctor-name {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .doctor-status {
+            font-size: 16px;
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .video-self {
+            position: absolute;
+            bottom: 100px;
+            right: 24px;
+            width: 240px;
+            height: 180px;
+            background: #374151;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 3px solid #6366f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .video-self:hover {
+            transform: scale(1.05);
+        }
+
+        .video-self-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .self-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .self-label {
+            font-size: 14px;
+            color: #d1d5db;
+        }
+
+        .video-info {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 16px 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .call-timer {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .timer-dot {
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .control-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            position: relative;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-4px);
+        }
+
+        .control-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .btn-mic {
+            background: #374151;
+            color: white;
+        }
+
+        .btn-mic:hover {
+            background: #4b5563;
+        }
+
+        .btn-mic.muted {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-camera {
+            background: #374151;
+            color: white;
+        }
+
+        .btn-camera:hover {
+            background: #4b5563;
+        }
+
+        .btn-camera.disabled {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-end {
+            background: #ef4444;
+            color: white;
+            width: 64px;
+            height: 64px;
+            box-shadow: 0 8px 24px rgba(239, 68, 68, 0.5);
+        }
+
+        .btn-end:hover {
+            background: #dc2626;
+            box-shadow: 0 12px 32px rgba(239, 68, 68, 0.6);
+        }
+
+        .btn-screen {
+            background: #374151;
+            color: white;
+        }
+
+        .btn-screen:hover {
+            background: #4b5563;
+        }
+
+        .btn-screen.active {
+            background: #6366f1;
+            color: white;
+        }
+
+        .btn-chat {
+            background: #374151;
+            color: white;
+        }
+
+        .btn-chat:hover {
+            background: #4b5563;
+        }
+
+        .btn-more {
+            background: #374151;
+            color: white;
+        }
+
+        .btn-more:hover {
+            background: #4b5563;
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        .control-btn:hover .tooltip {
+            opacity: 1;
+        }
+
+        .chat-panel {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 360px;
+            background: #1f2937;
+            border-left: 1px solid #374151;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-panel.active {
+            transform: translateX(0);
+        }
+
+        .chat-header {
+            padding: 20px;
+            border-bottom: 1px solid #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .chat-close {
+            width: 36px;
+            height: 36px;
+            background: #374151;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .chat-close:hover {
+            background: #4b5563;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            border-top: 1px solid #374151;
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 12px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            background: #374151;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .chat-send {
+            width: 48px;
+            height: 48px;
+            background: #6366f1;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .chat-send:hover {
+            background: #4f46e5;
+        }
+
+        .notification {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 16px 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .notification.show {
+            opacity: 1;
+        }
+
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #10b981;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .video-self {
+                width: 120px;
+                height: 90px;
+                bottom: 100px;
+                right: 16px;
+            }
+
+            .self-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .self-label {
+                font-size: 12px;
+            }
+
+            .doctor-avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 48px;
+            }
+
+            .doctor-name {
+                font-size: 24px;
+            }
+
+            .video-controls {
+                padding: 16px;
+                gap: 12px;
+            }
+
+            .control-btn {
+                width: 48px;
+                height: 48px;
+                font-size: 18px;
+            }
+
+            .btn-end {
+                width: 56px;
+                height: 56px;
+            }
+
+            .chat-panel {
+                width: 100%;
+            }
+
+            .video-info {
+                top: 16px;
+                left: 16px;
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <div class="video-main">
+            <div class="video-placeholder">
+                <div class="doctor-avatar">SW</div>
+                <div class="doctor-name">Dr. Sarah Wijaya</div>
+                <div class="doctor-status">
+                    <span class="status-dot"></span>
+                    Terhubung
+                </div>
+            </div>
+
+            <div class="video-self">
+                <div class="video-self-content">
+                    <div class="self-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="self-label">Anda</div>
+                </div>
+            </div>
+
+            <div class="video-info">
+                <div class="call-timer">
+                    <span class="timer-dot"></span>
+                    <span id="timer">00:00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-controls">
+            <button class="control-btn btn-mic" id="micBtn" onclick="toggleMic()">
+                <i class="fas fa-microphone"></i>
+                <span class="tooltip">Matikan Mikrofon</span>
+            </button>
+
+            <button class="control-btn btn-camera" id="cameraBtn" onclick="toggleCamera()">
+                <i class="fas fa-video"></i>
+                <span class="tooltip">Matikan Kamera</span>
+            </button>
+
+            <button class="control-btn btn-end" onclick="endCall()">
+                <i class="fas fa-phone-slash"></i>
+                <span class="tooltip">Akhiri Panggilan</span>
+            </button>
+
+            <button class="control-btn btn-screen" id="screenBtn" onclick="toggleScreen()">
+                <i class="fas fa-desktop"></i>
+                <span class="tooltip">Bagikan Layar</span>
+            </button>
+
+            <button class="control-btn btn-chat" onclick="toggleChat()">
+                <i class="fas fa-comment"></i>
+                <span class="tooltip">Chat</span>
+            </button>
+
+            <button class="control-btn btn-more" onclick="showMore()">
+                <i class="fas fa-ellipsis-v"></i>
+                <span class="tooltip">Lainnya</span>
+            </button>
+        </div>
+
+        <div class="chat-panel" id="chatPanel">
+            <div class="chat-header">
+                <div class="chat-title">Chat</div>
+                <button class="chat-close" onclick="toggleChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div style="text-align: center; color: #9ca3af; font-size: 14px; margin-top: 20px;">
+                    Tidak ada pesan
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <input type="text" class="chat-input" placeholder="Ketik pesan..." id="chatInput" onkeypress="handleEnter(event)">
+                    <button class="chat-send" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="notification" id="notification">
+            <div class="notification-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <div id="notificationText"></div>
+        </div>
+    </div>
+
+    <script>
+        let seconds = 0;
+        let micMuted = false;
+        let cameraOff = false;
+        let screenSharing = false;
+
+        function startTimer() {
+            setInterval(() => {
+                seconds++;
+                const mins = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                document.getElementById('timer').textContent = 
+                    `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function toggleMic() {
+            micMuted = !micMuted;
+            const btn = document.getElementById('micBtn');
+            const tooltip = btn.querySelector('.tooltip');
+            
+            if (micMuted) {
+                btn.classList.add('muted');
+                btn.innerHTML = '<i class="fas fa-microphone-slash"></i><span class="tooltip">Nyalakan Mikrofon</span>';
+                showNotification('Mikrofon dimatikan');
+            } else {
+                btn.classList.remove('muted');
+                btn.innerHTML = '<i class="fas fa-microphone"></i><span class="tooltip">Matikan Mikrofon</span>';
+                showNotification('Mikrofon dinyalakan');
+            }
+        }
+
+        function toggleCamera() {
+            cameraOff = !cameraOff;
+            const btn = document.getElementById('cameraBtn');
+            
+            if (cameraOff) {
+                btn.classList.add('disabled');
+                btn.innerHTML = '<i class="fas fa-video-slash"></i><span class="tooltip">Nyalakan Kamera</span>';
+                showNotification('Kamera dimatikan');
+            } else {
+                btn.classList.remove('disabled');
+                btn.innerHTML = '<i class="fas fa-video"></i><span class="tooltip">Matikan Kamera</span>';
+                showNotification('Kamera dinyalakan');
+            }
+        }
+
+        function toggleScreen() {
+            screenSharing = !screenSharing;
+            const btn = document.getElementById('screenBtn');
+            
+            if (screenSharing) {
+                btn.classList.add('active');
+                showNotification('Berbagi layar dimulai');
+            } else {
+                btn.classList.remove('active');
+                showNotification('Berbagi layar dihentikan');
+            }
+        }
+
+        function toggleChat() {
+            const panel = document.getElementById('chatPanel');
+            panel.classList.toggle('active');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                const messagesDiv = document.getElementById('chatMessages');
+                const time = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+                
+                messagesDiv.innerHTML += `
+                    <div style="margin-bottom: 16px; text-align: right;">
+                        <div style="display: inline-block; background: #6366f1; padding: 10px 14px; border-radius: 12px; border-bottom-right-radius: 4px; max-width: 80%;">
+                            <div style="font-size: 14px;">${message}</div>
+                            <div style="font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 4px;">${time}</div>
+                        </div>
+                    </div>
+                `;
+                
+                input.value = '';
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+        }
+
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function showMore() {
+            alert('Fitur tambahan:\n\n• Rekam sesi\n• Pengaturan audio/video\n• Blur background\n• Efek virtual');
+        }
+
+        function endCall() {
+            if (confirm('Akhiri panggilan sekarang?')) {
+                showNotification('Panggilan berakhir');
+                setTimeout(() => {
+                    window.location.href = 'konsultasi.html';
+                }, 1500);
+            }
+        }
+
+        function showNotification(text) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = text;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+
+        startTimer();
+
+        window.addEventListener('beforeunload', (e) => {
+            e.preventDefault();
+            e.returnValue = '';
+        });
+    </script>
+</body>
+</html>

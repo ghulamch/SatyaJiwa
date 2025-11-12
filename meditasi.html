@@ -40,32 +40,26 @@
     </style>
 </head>
 <body>
-    <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
     
-    <!-- Mobile Header -->
     <header class="mobile-header">
-        <div class="mobile-toggle" id="mobileToggle">
+        <div class="mobile-toggle" onclick="toggleSidebar()">
             <i class="fas fa-bars"></i>
         </div>
         <div class="mobile-logo">
-            <div class="mobile-logo-icon">🧠</div>
-            <span class="mobile-logo-text">SatyaJiwa</span>
+            <img src="assets/img/logo.png" alt="SatyaJiwa Logo" class="mobile-logo-img" style="width: 40px;">
+            <div class="mobile-logo-text">SatyaJiwa</div>
         </div>
     </header>
 
-    <!-- Sidebar Navigation -->
     <div id="sidebar-container"></div>
 
-    <!-- Main Content -->
     <main class="main-content">
-        <!-- Page Header -->
         <div class="page-header">
             <h1 class="page-title">Meditasi & Relaksasi</h1>
             <p class="page-subtitle">Temukan ketenangan dan keseimbangan mental melalui meditasi terpandu</p>
         </div>
 
-        <!-- Stats Overview -->
         <div class="stats-row">
             <div class="stat-card">
                 <div class="stat-header">
@@ -98,7 +92,6 @@
             </div>
         </div>
 
-        <!-- Quick Start Section -->
         <div class="card mb-lg">
             <div class="card-header">
                 <h2 class="card-title">Mulai Sekarang</h2>
@@ -139,14 +132,12 @@
             </div>
         </div>
 
-        <!-- Tutorial Section -->
         <div class="card mb-lg">
             <div class="card-header">
                 <h2 class="card-title">Tutorial Meditasi</h2>
             </div>
             
             <div class="tutorial-grid">
-                <!-- Tutorial 1: Breathing -->
                 <div class="tutorial-card">
                     <div class="tutorial-animation">
                         <div class="tutorial-breathing-demo">
@@ -190,7 +181,6 @@
                     </div>
                 </div>
 
-                <!-- Tutorial 2: Body Scan -->
                 <div class="tutorial-card">
                     <div class="tutorial-animation">
                         <div class="body-scan-demo">
@@ -233,7 +223,6 @@
                     </div>
                 </div>
 
-                <!-- Tutorial 3: Mindfulness -->
                 <div class="tutorial-card">
                     <div class="tutorial-animation">
                         <div class="mindfulness-demo">
@@ -281,7 +270,6 @@
             </div>
         </div>
 
-        <!-- Meditation Library -->
         <div class="card">
             <div class="card-header">
                 <h2 class="card-title">Koleksi Meditasi</h2>
@@ -399,7 +387,6 @@
         </div>
     </main>
 
-    <!-- Meditation Modal -->
     <div class="meditation-modal" id="meditationModal">
         <div class="meditation-modal-content">
             <button class="modal-close" onclick="closeMeditationModal()">
@@ -439,58 +426,25 @@
     </div>
 
     <script>
-        // ========================================
-        // MOBILE TOGGLE - FIXED VERSION
-        // ========================================
-        
-        const sidebar = document.getElementById('sidebar');
-        const mobileToggle = document.getElementById('mobileToggle');
-        const overlay = document.getElementById('overlay');
-
-        // Toggle Sidebar Function
         function toggleSidebar() {
-            if (sidebar && overlay) {
-                sidebar.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.classList.toggle('sidebar-open');
-                
-                console.log('Sidebar toggled:', sidebar.classList.contains('active'));
-            } else {
-                console.error('Sidebar atau overlay tidak ditemukan!');
-            }
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
         }
 
-        // Close Sidebar Function
         function closeSidebar() {
-            if (sidebar && overlay) {
-                sidebar.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.classList.remove('sidebar-open');
-            }
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
         }
 
-        // Event listener untuk mobile toggle button
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', function(e) {
-                e.stopPropagation();
-                toggleSidebar();
-            });
-        } else {
-            console.error('Mobile toggle button tidak ditemukan!');
-        }
-
-        // Event listener untuk overlay
-        if (overlay) {
-            overlay.addEventListener('click', closeSidebar);
-        }
-
-        // Close sidebar saat click di luar (hanya di mobile)
         document.addEventListener('click', function(event) {
             if (window.innerWidth <= 768) {
                 const mobileHeader = document.querySelector('.mobile-header');
                 
                 if (sidebar && sidebar.classList.contains('active')) {
-                    // Check jika click bukan di sidebar dan bukan di mobile header
                     if (!sidebar.contains(event.target) && 
                         !mobileHeader.contains(event.target)) {
                         closeSidebar();
@@ -499,24 +453,20 @@
             }
         });
 
-        // Handle window resize
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 closeSidebar();
             }
         });
 
-        // Handle orientation change
         window.addEventListener('orientationchange', function() {
             setTimeout(() => {
                 if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('active')) {
-                    // Optional: close sidebar on orientation change
-                    // closeSidebar();
+                    closeSidebar();
                 }
             }, 300);
         });
 
-        // Debug: Log saat halaman load
         window.addEventListener('DOMContentLoaded', function() {
             console.log('Page loaded');
             console.log('Sidebar:', sidebar ? 'Found' : 'Not found');
@@ -524,10 +474,6 @@
             console.log('Overlay:', overlay ? 'Found' : 'Not found');
         });
 
-        // ========================================
-        // MEDITATION FUNCTIONS
-        // ========================================
-        
         let meditationTimer;
         let timerSeconds = 0;
         let isPlaying = false;
@@ -612,7 +558,7 @@
         }
 
         function updateProgress() {
-            const maxDuration = 900; // 15 minutes
+            const maxDuration = 900; 
             const progress = Math.min((timerSeconds / maxDuration) * 100, 100);
             document.getElementById('meditationProgress').style.width = progress + '%';
         }
@@ -629,7 +575,6 @@
             startMeditation('mindfulness');
         }
 
-        // Filter functionality
         const filterBtns = document.querySelectorAll('.filter-btn');
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {

@@ -1,0 +1,122 @@
+.education, .article-content-wrapper {
+    background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+    overflow: hidden;
+}
+
+.education::before, .education::after, .testimonials::before, .testimonials::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+}
+
+.education::before {
+    bottom: -10%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+}
+
+.education::after {
+    top: -10%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+}
+
+.education-grid, .testimonials-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.education-card, .article-card {
+    border-radius: var(--radius-2xl);
+    cursor: pointer;
+    padding: 0;
+}
+
+.education-card:hover, .article-card:hover {
+    transform: translateY(-12px) scale(1.02);
+}
+
+.education-card h3 {
+    font-size: 18px;
+}
+
+.education-card p {
+    font-size: 14px;
+    margin-bottom: var(--spacing-md);
+}
+
+.education-image, .article-thumbnail {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--info-500) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.education-card:hover .education-image {
+    transform: scale(1.05);
+}
+
+.education-image::before, .education-image::after, .article-thumbnail::before {
+    content: '';
+    position: absolute;
+}
+
+.education-image::before, .article-thumbnail::before {
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+}
+
+.education-image::after {
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+}
+
+.education-content, .article-body {
+    padding: var(--spacing-lg);
+}
+
+.education-meta, .article-meta, .article-meta-header {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    font-size: 13px;
+    color: var(--gray-500);
+}
+
+.education-meta span, .article-meta span, .article-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary-600);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: gap var(--transition-fast);
+}
+
+.read-more:hover {
+    gap: 10px;
+}
